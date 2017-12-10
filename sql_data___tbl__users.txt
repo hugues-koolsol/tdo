@@ -1,0 +1,2 @@
+"2";"_anonymous";"_anonymous";"0";"";"2";"1";"0";"";"";"1000-01-01 00:00:00";"1000-01-01 00:00:00";"0"
+"1";"root";"someone@somewhere.com";"0";"$2y$12$3bp41fGogqgkX9vwEvC8lOHeNFU9guqEjWkYdgOEoYyJl2N.26PZq";"1";"1";"1";"Someone";"Somewhere";"2017-12-10 15:31:42";"1000-01-01 00:00:00";"23"
