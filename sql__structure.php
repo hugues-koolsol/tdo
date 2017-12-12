@@ -11,7 +11,7 @@ if($err==0){
 
  $sql='CREATE TABLE `tdo_tbl__css` (
    `fld_id_css` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-   `fld_name_css` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
+   `fld_name_css` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\' COMMENT \'{"showDeleteField":true}\',
    `fld_active_css` tinyint(4) NOT NULL DEFAULT \'0\' COMMENT \'{"param":"yorno"}\',
    `fld_color_back_css` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT \'{"subtype":"webcolor"}\',
    `fld_color_text_css` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT \'{"subtype":"webcolor"}\',
@@ -32,7 +32,7 @@ if($err==0){
 
  $sql='CREATE TABLE `tdo_tbl__groups` (
    `fld_id_groups` bigint(20) NOT NULL AUTO_INCREMENT,
-   `fld_name_groups` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
+   `fld_name_groups` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\' COMMENT \'{"showDeleteField":true}\',
    `fld_parent_id_groups` bigint(20) NOT NULL DEFAULT \'1\',
    `fld_isactive_groups` tinyint(4) NOT NULL DEFAULT \'1\' COMMENT \'{"param":"yorno"}\',
    `fld_tsupd_groups` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\',
@@ -110,7 +110,7 @@ if($err==0){
 
  $sql='CREATE TABLE `tdo_tbl__pages` (
    `fld_id_pages` bigint(20) NOT NULL AUTO_INCREMENT,
-   `fld_name_pages` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
+   `fld_name_pages` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\' COMMENT \'{"showDeleteField":true}\',
    `fld_menu_pages` tinyint(4) NOT NULL DEFAULT \'0\' COMMENT \'{"param":"yorno"}\',
    `fld_isajax_pages` tinyint(4) NOT NULL DEFAULT \'0\' COMMENT \'{"param":"yorno"}\',
    `fld_isremote_pages` tinyint(4) NOT NULL DEFAULT \'1\' COMMENT \'{"param":"yorno"}\',
@@ -123,7 +123,7 @@ if($err==0){
    `fld_cntupd_pages` bigint(20) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_pages`),
    UNIQUE KEY `k_pages1` (`fld_name_pages`)
- ) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT=\'{"remote":false}\'';
+ ) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT=\'{"remote":false}\'';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__pages'.mysqli_error($dbLink) ) );
@@ -134,7 +134,7 @@ if($err==0){
 
  $sql='CREATE TABLE `tdo_tbl__paramnames` (
    `fld_id_parnams` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-   `fld_key_parnams` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
+   `fld_key_parnams` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\' COMMENT \'{"showDeleteField":true}\',
    `fld_label_parnams` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
    `fld_comment_parnams` text COLLATE utf8_unicode_ci,
    `fld_json_parnams` text COLLATE utf8_unicode_ci NOT NULL,
@@ -194,7 +194,7 @@ if($err==0){
  $sql='CREATE TABLE `tdo_tbl__tables` (
    `fld_id_tables` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
    `fld_id_server_tables` int(11) NOT NULL DEFAULT \'0\',
-   `fld_name_tables` varchar(128) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
+   `fld_name_tables` varchar(128) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\' COMMENT \'{"showDeleteField":true}\',
    `fld_tsupd_tables` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\',
    `fld_tscrt_tables` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\',
    `fld_cntupd_tables` int(11) NOT NULL DEFAULT \'0\',
@@ -210,7 +210,7 @@ if($err==0){
 
  $sql='CREATE TABLE `tdo_tbl__users` (
    `fld_id_users` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-   `fld_login_users` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
+   `fld_login_users` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\' COMMENT \'{"showDeleteField":true}\',
    `fld_email_users` varchar(128) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
    `fld_loginisemail_users` tinyint(4) NOT NULL DEFAULT \'0\' COMMENT \'{"param":"yorno"}\',
    `fld_password_users` varchar(256) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
@@ -239,7 +239,7 @@ if($err==0){
    `fld_yorno1_zztests` varchar(16) COLLATE utf8_unicode_ci NOT NULL COMMENT \'{"param":"yorno","unsetPossible":true}\',
    `fld_visited_countries_zztests` set(\'FR\',\'US\',\'GB\',\'BE\',\'KO\',\'ES\') COLLATE utf8_unicode_ci NOT NULL COMMENT \'{"param":"country","set":true}\',
    `fld_country1_zztests` varchar(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'FR\' COMMENT \'{"param":"country","dropDown":"true","unsetPossible":true}\',
-   `fld_title32_zztests` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\',
+   `fld_title32_zztests` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\' COMMENT \'{"showDeleteField":true}\',
    `fld_id_parent_zztests` bigint(20) unsigned DEFAULT NULL,
    `fld_date1_zztests` date DEFAULT \'1000-01-01\',
    `fld_time1_zztests` time DEFAULT \'00:00:00\',
@@ -263,7 +263,7 @@ if($err==0){
    `fld_id_todos` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
    `fld_priority_todos` int(2) unsigned zerofill NOT NULL DEFAULT \'00\',
    `fld_id_user_todos` bigint(20) unsigned NOT NULL DEFAULT \'0\',
-   `fld_title_todos` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'todo\',
+   `fld_title_todos` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'todo\' COMMENT \'{"showDeleteField":true}\',
    `fld_comment_todos` text COLLATE utf8_unicode_ci,
    `fld_tsupd_todos` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\',
    `fld_tscrt_todos` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\',
