@@ -83,7 +83,7 @@ if($err==0){
    `fld_cntupd_lngVals` int(11) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_lngVals`),
    UNIQUE KEY `k_page_key_lang` (`fld_key_lngVals`,`fld_lang_lngVals`,`fld_page_id_lngVals`,`fld_type_lngVals`) USING BTREE
- ) ENGINE=MyISAM AUTO_INCREMENT=1730 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci';
+ ) ENGINE=MyISAM AUTO_INCREMENT=1825 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__langvalues'.mysqli_error($dbLink) ) );
@@ -123,7 +123,7 @@ if($err==0){
    `fld_cntupd_pages` bigint(20) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_pages`),
    UNIQUE KEY `k_pages1` (`fld_name_pages`)
- ) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT=\'{"remote":false}\'';
+ ) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT=\'{"remote":false}\'';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__pages'.mysqli_error($dbLink) ) );

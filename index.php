@@ -411,9 +411,9 @@ if(isset($_SESSION[PGMK]['step']) && $_SESSION[PGMK]['step']==6){
  $o1.='<br /><br /><br />';
 
  $o1.='<label for="incPathUnderRoot">';
- $o1.='Check this if the include and data directories will be under the www directory instead of the root directory';
+ $o1.='Uncheck this if the include and data directories will be under the root directory instead of the www directory';
  $o1.='<br /><br />';
- $o1.='<input type="checkbox" id="incPathUnderRoot" name="incPathUnderRoot"  style="transform:scale(2);">';
+ $o1.='<input type="checkbox" id="incPathUnderRoot" name="incPathUnderRoot" checked="checked"  style="transform:scale(2);">';
  $o1.='</label>';
  $o1.='</p>';
  
