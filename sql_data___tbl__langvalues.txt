@@ -998,3 +998,7 @@
 "1727";"fld_password_users must not be empty_24_93";"en";"8";"the password must not be empty";"page";"2017-12-10 15:18:00";"2017-12-10 15:18:00";"0"
 "1728";"fld_password_users must be the same as confirmation_28_93";"fr";"8";"le mot de passe et sa confirmation doivent être les mêmes";"page";"2017-12-10 15:18:26";"2017-12-10 15:18:26";"0"
 "1729";"fld_password_users must be the same as confirmation_28_93";"en";"8";"the password and the confirmation must be the same";"page";"2017-12-10 15:19:19";"2017-12-10 15:19:19";"0"
+"1730";"copy from_453_52";"fr";"16";"copier de";"page";"2017-12-14 11:07:13";"2017-12-14 11:07:13";"0"
+"1731";"choose a page_455_32";"fr";"16";"choisissez une page";"page";"2017-12-14 11:07:23";"2017-12-14 11:07:23";"0"
+"1732";"copy from_453_52";"en";"16";"copy from";"page";"2017-12-14 11:07:47";"2017-12-14 11:07:47";"0"
+"1733";"choose a page_455_32";"en";"16";"choose a page";"page";"2017-12-14 11:07:49";"2017-12-14 11:07:49";"0"
