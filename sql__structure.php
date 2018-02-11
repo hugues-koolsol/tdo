@@ -7,6 +7,7 @@ if(!$dbLink){
  header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot connect to the local database server') );
  exit();
 };
+mysqli_set_charset( $dbLink , 'utf8' );
 if($err==0){
 
  $sql='CREATE TABLE `tdo_tbl__css` (
@@ -83,7 +84,7 @@ if($err==0){
    `fld_cntupd_lngVals` int(11) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_lngVals`),
    UNIQUE KEY `k_page_key_lang` (`fld_key_lngVals`,`fld_lang_lngVals`,`fld_page_id_lngVals`,`fld_type_lngVals`) USING BTREE
- ) ENGINE=MyISAM AUTO_INCREMENT=1825 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci';
+ ) ENGINE=MyISAM AUTO_INCREMENT=1857 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__langvalues'.mysqli_error($dbLink) ) );
@@ -270,7 +271,7 @@ if($err==0){
    `fld_cntupd_todos` int(11) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_todos`),
    KEY `k_user` (`fld_id_user_todos`)
- ) ENGINE=MyISAM AUTO_INCREMENT=123 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci';
+ ) ENGINE=MyISAM AUTO_INCREMENT=124 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl_todos'.mysqli_error($dbLink) ) );

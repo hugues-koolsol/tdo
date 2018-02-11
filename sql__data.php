@@ -10,6 +10,7 @@ if(!$dbLink){
  exit();
 };
 
+mysqli_set_charset( $dbLink , 'utf8' );
 if($err==0){
 
  $sql='TRUNCATE `tdo_tbl__css` ';
