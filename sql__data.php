@@ -682,6 +682,89 @@ if($err==0){
 
 if($err==0){
 
+ $sql='TRUNCATE `tdo_tbl__paramrules` ';
+ if(!($result=mysqli_query($dbLink,$sql))){
+  $err=1;
+  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl__paramrules'.mysqli_error($dbLink) ) );
+  exit();
+ }
+}
+if($err==0){
+
+ $par=array(
+  'table'           => 'tdo_tbl__paramrules' ,
+  'file'            => 'sql_data___tbl__paramrules.txt' ,
+  'listeDesChamps'  => '`fld_id_parrules` , `fld_name_parrules` , `fld_id_param_parrules` , `fld_tsupd_parrules` , `fld_tscrt_parrules` , `fld_cntupd_parrules`' ,
+  'tabChamps'       => array (
+  0 => 
+  array (
+    0 => 'fld_id_parrules',
+    1 => 'bigint(20)',
+    2 => 'NO',
+    3 => 'PRI',
+    4 => NULL,
+    5 => 'auto_increment',
+  ),
+  1 => 
+  array (
+    0 => 'fld_name_parrules',
+    1 => 'varchar(64)',
+    2 => 'NO',
+    3 => 'MUL',
+    4 => '',
+    5 => '',
+  ),
+  2 => 
+  array (
+    0 => 'fld_id_param_parrules',
+    1 => 'bigint(20) unsigned',
+    2 => 'NO',
+    3 => '',
+    4 => NULL,
+    5 => '',
+  ),
+  3 => 
+  array (
+    0 => 'fld_tsupd_parrules',
+    1 => 'datetime',
+    2 => 'NO',
+    3 => '',
+    4 => '1000-01-01 00:00:00',
+    5 => '',
+  ),
+  4 => 
+  array (
+    0 => 'fld_tscrt_parrules',
+    1 => 'datetime',
+    2 => 'NO',
+    3 => '',
+    4 => '1000-01-01 00:00:00',
+    5 => '',
+  ),
+  5 => 
+  array (
+    0 => 'fld_cntupd_parrules',
+    1 => 'bigint(20) unsigned',
+    2 => 'NO',
+    3 => '',
+    4 => '0',
+    5 => '',
+  ),
+) ,
+  'dbLink'          => $dbLink ,
+  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+ );
+ $retCsv=integrerCsv($par);
+ if($retCsv['status']!='OK'){
+  $err=1;
+  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl__paramrules' ) );
+  exit();
+ }
+
+}
+
+if($err==0){
+
  $sql='TRUNCATE `tdo_tbl__paramvalues` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;

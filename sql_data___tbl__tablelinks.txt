@@ -8,3 +8,4 @@
 "8";"12";"fld_id_zztests";"fld_title32_zztests";"12";"fld_id_parent_zztests";"0";"2017-12-09 14:02:24";"2017-10-28 17:47:40";"6"
 "11";"10";"fld_id_tables";"fld_name_tables";"9";"fld_parent_table_id_pglnks";"1";"2017-12-04 20:41:20";"2017-11-20 16:33:15";"2"
 "12";"10";"fld_id_tables";"fld_name_tables";"9";"fld_children_table_id_pglnks";"1";"2017-12-04 20:41:05";"2017-11-20 16:34:12";"10"
+"13";"6";"fld_id_parnams";"fld_label_parnams";"18";"fld_id_param_parrules";"1";"2018-11-22 14:58:19";"2018-11-22 14:58:19";"0"

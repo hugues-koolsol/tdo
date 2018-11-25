@@ -1,98 +1,156 @@
 "1";"__lang1";"language";"This must NOT be updated unless you know what to do !
 Ceci ne doit pas être modifié à moins que vous sachiez ce que vous faites !";"{
- \"comment\" : \"DO not modify this unless you know what to do\",
- \"fields\"  : [
-  {
-   \"name\"                : \"language_code\" ,
-   \"type\"                : \"char\"          ,
-   \"length\"              : 6               ,
-   \"comment\"             : \"fr, en, en-us, fr-be, ....\"
-  },
-  {
-   \"name\"                : \"n\"    ,
-   \"type\"                : \"char\" ,
-   \"length\"              : 64     ,
-   \"languageTranslation\" : false  ,
-   \"comment1\" : \"the language name in it's original \",
-   \"comment2\" : \"language ( fr => Français , en => English ).\" ,
-   \"comment3\" : \"languageTranslation must be set in one field to true or false.\" ,
-   \"comment4\" : \"Here it is false because the language appears in the original name\" 
-  }
- ],
- \"key\" : \"language_code\"
-}";"{\"0\":1,\"1\":2}";"0";"2017-09-14 18:34:02";"2017-09-24 19:45:12";"36"
+    \"comment\": \"DO not modify this unless you know what to do\",
+    \"fields\": [
+        {
+            \"name\": \"language_code\",
+            \"type\": \"char\",
+            \"length\": 6,
+            \"comment\": \"fr, en, en-us, fr-be, ....\"
+        },
+        {
+            \"name\": \"n\",
+            \"type\": \"char\",
+            \"length\": 64,
+            \"languageTranslation\": false,
+            \"comment1\": \"the language name in it's original \",
+            \"comment2\": \"language ( fr => Fran\\u00e7ais , en => English ).\",
+            \"comment3\": \"languageTranslation must be set in one field to true or false.\",
+            \"comment4\": \"Here it is false because the language appears in the original name\"
+        }
+    ],
+    \"key\": \"language_code\",
+    \"id\": \"1\"
+}";"{\"0\":1,\"1\":2}";"0";"2017-09-14 18:34:02";"2018-11-24 13:26:45";"37"
 "2";"yorno";"Yes or No";NULL;"{
- \"fields\"  : [
-  {
-   \"name\"                : \"code\" ,
-   \"type\"                : \"int\"          ,
-   \"length\"              : 1               ,
-   \"comment\"             : \"1:yes or 0:no\"
-  },
-  {
-   \"name\"                : \"n\"    ,
-   \"type\"                : \"char\" ,
-   \"length\"              : 16     ,
-   \"languageTranslation\" : true   
-  }
- ],
- \"key\" : \"code\" ,
- \"dependencies\" : [
-  {\"id_db\" : 0 , \"table\" : \"tdo_tbl__grpspgs\"     ,  \"field\" : \"fld_is_menu_grpspgs\"    },
-  {\"id_db\" : 0 , \"table\" : \"tdo_tbl__pages\"       ,  \"field\" : \"fld_active_pages\"       },
-  {\"id_db\" : 0 , \"table\" : \"tdo_tbl__pages\"       ,  \"field\" : \"fld_isuser_pages\"       },
-  {\"id_db\" : 0 , \"table\" : \"tdo_tbl__pages\"       ,  \"field\" : \"fld_localadmin_pages\"   },
-  {\"id_db\" : 0 , \"table\" : \"tdo_tbl__pages\"       ,  \"field\" : \"fld_isaction_pages\"     },
-  {\"id_db\" : 0 , \"table\" : \"tdo_tbl__users\"       ,  \"field\" : \"fld_active_users\"       },
-  {\"id_db\" : 0 , \"table\" : \"tdo_tbl__users\"       ,  \"field\" : \"fld_translate_users\"    },
-  {\"id_db\" : 0 , \"table\" : \"tdo_tbl__users\"       ,  \"field\" : \"fld_loginisemail_users\" },
-  {\"id_db\" : 0 , \"table\" : \"tdo_tbl__tables\"      ,  \"field\" : \"fld_isremote_tables\"    },
-  {\"id_db\" : 0 , \"table\" : \"tdo_tbl__paramnames\"  ,  \"field\" : \"fld_isuser_parnams\"     },
-  {\"id_db\" : 0 , \"table\" : \"tdo_tbl__groups\"      ,  \"field\" : \"fld_isactive_groups\"    },
-  {\"id_db\" : 0 , \"table\" : \"tdo_tbl_fournisseur\"  ,  \"field\" : \"fld_actif_fournisseur\"  }
- ]
-}";"{\"it\":{\"0\":29,\"1\":30},\"en\":{\"0\":\"29\",\"1\":\"33\"},\"fr\":{\"0\":29,\"1\":33}}";"0";"2017-09-18 18:41:24";"2017-11-20 13:43:01";"18"
+    \"fields\": [
+        {
+            \"name\": \"code\",
+            \"type\": \"int\",
+            \"length\": 1,
+            \"comment\": \"1:yes or 0:no\"
+        },
+        {
+            \"name\": \"n\",
+            \"type\": \"char\",
+            \"length\": 16,
+            \"languageTranslation\": true
+        }
+    ],
+    \"key\": \"code\",
+    \"dependencies\": [
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__grpspgs\",
+            \"field\": \"fld_is_menu_grpspgs\"
+        },
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__pages\",
+            \"field\": \"fld_active_pages\"
+        },
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__pages\",
+            \"field\": \"fld_isuser_pages\"
+        },
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__pages\",
+            \"field\": \"fld_localadmin_pages\"
+        },
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__pages\",
+            \"field\": \"fld_isaction_pages\"
+        },
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__users\",
+            \"field\": \"fld_active_users\"
+        },
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__users\",
+            \"field\": \"fld_translate_users\"
+        },
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__users\",
+            \"field\": \"fld_loginisemail_users\"
+        },
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__tables\",
+            \"field\": \"fld_isremote_tables\"
+        },
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__paramnames\",
+            \"field\": \"fld_isuser_parnams\"
+        },
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__groups\",
+            \"field\": \"fld_isactive_groups\"
+        },
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl_fournisseur\",
+            \"field\": \"fld_actif_fournisseur\"
+        }
+    ],
+    \"id\": \"2\"
+}";"{\"it\":{\"0\":29,\"1\":30},\"en\":{\"0\":\"29\",\"1\":\"33\"},\"fr\":{\"0\":29,\"1\":33}}";"0";"2017-09-18 18:41:24";"2018-11-24 13:26:29";"19"
 "4";"country";"country";NULL;"{
- \"comment\" : \"This is an example\",
- \"key\"     : \"country_code\",
- \"fields\"  : [
-  {
-   \"name\"                : \"country_code\" ,
-   \"type\"                : \"char\"          ,
-   \"length\"              : 2               ,
-   \"comment\"             : \"FR, US, GB, BE, ....\"
-  },
-  {
-   \"name\"                : \"n\"    ,
-   \"type\"                : \"char\" ,
-   \"length\"              : 64     ,
-   \"languageTranslation\" : true   ,
-   \"comment1\" : \"the language name\"
-  }
- ],
- \"dependencies\" : [
-  {\"id_db\" : 0 , \"table\" : \"tdo_tbl__zztests\"     ,  \"field\" : \"fld_visited_countries_zztests\"  },
-  {\"id_db\" : 0 , \"table\" : \"tdo_tbl__zztests\"     ,  \"field\" : \"fld_country1_zztests\"           }
- ]
-
-}";"{\"fr\":{\"0\":\"43\",\"1\":\"46\",\"2\":\"49\",\"3\":\"41\",\"4\":\"40\",\"5\":\"42\"},\"en\":{\"0\":\"43\",\"1\":\"40\",\"2\":\"42\",\"3\":\"46\",\"4\":\"49\",\"5\":\"41\"}}";"1";"2017-10-03 20:31:04";"2017-12-01 20:29:08";"14"
+    \"comment\": \"This is an example\",
+    \"key\": \"country_code\",
+    \"fields\": [
+        {
+            \"name\": \"country_code\",
+            \"type\": \"char\",
+            \"length\": 2,
+            \"comment\": \"FR, US, GB, BE, ....\"
+        },
+        {
+            \"name\": \"n\",
+            \"type\": \"char\",
+            \"length\": 64,
+            \"languageTranslation\": true,
+            \"comment1\": \"the language name\"
+        }
+    ],
+    \"dependencies\": [
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__zztests\",
+            \"field\": \"fld_visited_countries_zztests\"
+        },
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__zztests\",
+            \"field\": \"fld_country1_zztests\"
+        }
+    ],
+    \"id\": \"4\"
+}";"{\"fr\":{\"0\":\"43\",\"1\":\"46\",\"2\":\"49\",\"3\":\"41\",\"4\":\"40\",\"5\":\"42\",\"6\":\"57\"},\"en\":{\"0\":\"43\",\"1\":\"40\",\"2\":\"42\",\"3\":\"57\",\"4\":\"46\",\"5\":\"49\",\"6\":\"41\"}}";"1";"2017-10-03 20:31:04";"2018-11-24 13:26:11";"23"
 "3";"day2c";"Day name with 2 characters";NULL;"{
- \"comment\" : \"Iso day number: 1,2,3,4,5,6,7\",
- \"key\"     : \"day_code\",
- \"fields\"  : [
-  {
-   \"name\"                : \"day_code\" ,
-   \"type\"                : \"char\"          ,
-   \"length\"              : 1     ,
-   \"comment\"             : \"1,2,3,4,5,6,7\"
-  },
-  {
-   \"name\"                : \"n\"    ,
-   \"type\"                : \"char\" ,
-   \"length\"              : 2     ,
-   \"languageTranslation\" : true   ,
-   \"comment1\" : \"the language name\"
-  }
- ]
-
-}";"{\"fr\":{\"0\":\"50\",\"1\":\"51\",\"2\":\"52\",\"3\":\"53\",\"4\":\"54\",\"5\":\"55\",\"6\":\"56\"},\"en\":{\"0\":\"50\",\"1\":\"51\",\"2\":\"52\",\"3\":\"53\",\"4\":\"54\",\"5\":\"55\",\"6\":\"56\"}}";"0";"2018-05-29 14:34:42";"2018-05-29 14:39:53";"2"
+    \"comment\": \"Iso day number: 1,2,3,4,5,6,7\",
+    \"key\": \"day_code\",
+    \"fields\": [
+        {
+            \"name\": \"day_code\",
+            \"type\": \"char\",
+            \"length\": 1,
+            \"comment\": \"1,2,3,4,5,6,7\"
+        },
+        {
+            \"name\": \"n\",
+            \"type\": \"char\",
+            \"length\": 2,
+            \"languageTranslation\": true,
+            \"comment1\": \"the language name\"
+        }
+    ],
+    \"id\": \"3\"
+}";"{\"fr\":{\"0\":\"50\",\"1\":\"51\",\"2\":\"52\",\"3\":\"53\",\"4\":\"54\",\"5\":\"55\",\"6\":\"56\"},\"en\":{\"0\":\"50\",\"1\":\"51\",\"2\":\"52\",\"3\":\"53\",\"4\":\"54\",\"5\":\"55\",\"6\":\"56\"}}";"0";"2018-05-29 14:34:42";"2018-11-24 13:26:21";"3"
