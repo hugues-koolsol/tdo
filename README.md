@@ -1,6 +1,6 @@
 # tdo
 A php/mysql skeleton without any framework or oop for back offices
-Vanilla javascript, php and mysql, css anf html.
+Vanilla javascript, php and mysql, css and html.
 *Why ?*
 Frameworks evolve too much, they don't make make evolutions but revolutions ! 
 Revolutions happen most of the time when something is wrong and sometimes when something is new. 
@@ -10,4 +10,7 @@ and I think that the components should be basic to allow this.
 
 Tdo is not full of shiny interfaces, super-clever components and delightfull buzzwords but anyone with a reasonable knoweledge in the 5 basic technologies used in web development is able to maintain it. these techlogies are : server language (php) , database ( mysql ), html, javascript and css ) 
 
-If your client really wants this, use angular, react, zend, symfony, laravel ... and make him pay ! You have many choises, and these many choises is the very begining of your difficulties :-)  
+Tdo contains a menu "generate sources" to produce basic list+CRUD interfaces when the database fields are defined.
+Then, you only have to maintain theses sources.
+
+If your client really wants shiny, use angular, react, zend, symfony, laravel ... and make him pay ! You have many choises, and these many choises is the very begining of not-yours but others difficulties for maintenance :-)  
