@@ -21,7 +21,7 @@ Ceci ne doit pas être modifié à moins que vous sachiez ce que vous faites !";
     ],
     \"key\": \"language_code\",
     \"id\": \"1\"
-}";"{\"0\":1,\"1\":2}";"0";"2017-09-14 18:34:02";"2018-11-24 13:26:45";"37"
+}";"{\"0\":1,\"1\":2}";"0";"2017-09-14 18:34:02";"2019-01-19 19:13:17";"38"
 "2";"yorno";"Yes or No";NULL;"{
     \"fields\": [
         {
@@ -38,70 +38,8 @@ Ceci ne doit pas être modifié à moins que vous sachiez ce que vous faites !";
         }
     ],
     \"key\": \"code\",
-    \"dependencies\": [
-        {
-            \"id_db\": 0,
-            \"table\": \"tdo_tbl__grpspgs\",
-            \"field\": \"fld_is_menu_grpspgs\"
-        },
-        {
-            \"id_db\": 0,
-            \"table\": \"tdo_tbl__pages\",
-            \"field\": \"fld_active_pages\"
-        },
-        {
-            \"id_db\": 0,
-            \"table\": \"tdo_tbl__pages\",
-            \"field\": \"fld_isuser_pages\"
-        },
-        {
-            \"id_db\": 0,
-            \"table\": \"tdo_tbl__pages\",
-            \"field\": \"fld_localadmin_pages\"
-        },
-        {
-            \"id_db\": 0,
-            \"table\": \"tdo_tbl__pages\",
-            \"field\": \"fld_isaction_pages\"
-        },
-        {
-            \"id_db\": 0,
-            \"table\": \"tdo_tbl__users\",
-            \"field\": \"fld_active_users\"
-        },
-        {
-            \"id_db\": 0,
-            \"table\": \"tdo_tbl__users\",
-            \"field\": \"fld_translate_users\"
-        },
-        {
-            \"id_db\": 0,
-            \"table\": \"tdo_tbl__users\",
-            \"field\": \"fld_loginisemail_users\"
-        },
-        {
-            \"id_db\": 0,
-            \"table\": \"tdo_tbl__tables\",
-            \"field\": \"fld_isremote_tables\"
-        },
-        {
-            \"id_db\": 0,
-            \"table\": \"tdo_tbl__paramnames\",
-            \"field\": \"fld_isuser_parnams\"
-        },
-        {
-            \"id_db\": 0,
-            \"table\": \"tdo_tbl__groups\",
-            \"field\": \"fld_isactive_groups\"
-        },
-        {
-            \"id_db\": 0,
-            \"table\": \"tdo_tbl_fournisseur\",
-            \"field\": \"fld_actif_fournisseur\"
-        }
-    ],
     \"id\": \"2\"
-}";"{\"it\":{\"0\":29,\"1\":30},\"en\":{\"0\":\"29\",\"1\":\"33\"},\"fr\":{\"0\":29,\"1\":33}}";"0";"2017-09-18 18:41:24";"2018-11-24 13:26:29";"19"
+}";"{\"it\":{\"0\":29,\"1\":30},\"en\":{\"0\":\"29\",\"1\":\"33\"},\"fr\":{\"0\":29,\"1\":33}}";"0";"2017-09-18 18:41:24";"2019-01-19 19:42:04";"21"
 "4";"country";"country";NULL;"{
     \"comment\": \"This is an example\",
     \"key\": \"country_code\",
@@ -133,7 +71,7 @@ Ceci ne doit pas être modifié à moins que vous sachiez ce que vous faites !";
         }
     ],
     \"id\": \"4\"
-}";"{\"fr\":{\"0\":\"43\",\"1\":\"46\",\"2\":\"49\",\"3\":\"41\",\"4\":\"40\",\"5\":\"42\",\"6\":\"57\"},\"en\":{\"0\":\"43\",\"1\":\"40\",\"2\":\"42\",\"3\":\"57\",\"4\":\"46\",\"5\":\"49\",\"6\":\"41\"}}";"1";"2017-10-03 20:31:04";"2018-11-24 13:26:11";"23"
+}";"{\"fr\":{\"0\":\"43\",\"1\":\"46\",\"2\":\"49\",\"3\":\"41\",\"4\":\"40\",\"5\":\"42\",\"6\":\"57\"},\"en\":{\"0\":\"43\",\"1\":\"40\",\"2\":\"42\",\"3\":\"57\",\"4\":\"46\",\"5\":\"49\",\"6\":\"41\"}}";"1";"2017-10-03 20:31:04";"2019-01-19 19:13:04";"24"
 "3";"day2c";"Day name with 2 characters";NULL;"{
     \"comment\": \"Iso day number: 1,2,3,4,5,6,7\",
     \"key\": \"day_code\",
@@ -153,4 +91,4 @@ Ceci ne doit pas être modifié à moins que vous sachiez ce que vous faites !";
         }
     ],
     \"id\": \"3\"
-}";"{\"fr\":{\"0\":\"50\",\"1\":\"51\",\"2\":\"52\",\"3\":\"53\",\"4\":\"54\",\"5\":\"55\",\"6\":\"56\"},\"en\":{\"0\":\"50\",\"1\":\"51\",\"2\":\"52\",\"3\":\"53\",\"4\":\"54\",\"5\":\"55\",\"6\":\"56\"}}";"0";"2018-05-29 14:34:42";"2018-11-24 13:26:21";"3"
+}";"{\"fr\":{\"0\":\"50\",\"1\":\"51\",\"2\":\"52\",\"3\":\"53\",\"4\":\"54\",\"5\":\"55\",\"6\":\"56\"},\"en\":{\"0\":\"50\",\"1\":\"51\",\"2\":\"52\",\"3\":\"53\",\"4\":\"54\",\"5\":\"55\",\"6\":\"56\"}}";"0";"2018-05-29 14:34:42";"2019-01-19 19:13:08";"4"
