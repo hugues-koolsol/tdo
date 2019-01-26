@@ -84,7 +84,7 @@ if($err==0){
    `fld_cntupd_lngVals` int(11) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_lngVals`),
    UNIQUE KEY `k_page_key_lang` (`fld_key_lngVals`,`fld_lang_lngVals`,`fld_page_id_lngVals`,`fld_type_lngVals`) USING BTREE
- ) ENGINE=MyISAM AUTO_INCREMENT=2052 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=MyISAM AUTO_INCREMENT=2058 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__langvalues'.mysqli_error($dbLink) ) );
@@ -124,7 +124,7 @@ if($err==0){
    `fld_cntupd_pages` bigint(20) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_pages`),
    UNIQUE KEY `k_pages1` (`fld_name_pages`)
- ) ENGINE=MyISAM AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=\'{"remote":false}\'';
+ ) ENGINE=MyISAM AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__pages'.mysqli_error($dbLink) ) );
@@ -201,7 +201,7 @@ if($err==0){
    `fld_tscrt_pglnks` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\',
    `fld_cntupd_pglnks` int(11) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_pglnks`)
- ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=\'{"remote":false}\'';
+ ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__tablelinks'.mysqli_error($dbLink) ) );
@@ -264,12 +264,13 @@ if($err==0){
    `fld_time1_zztests` time DEFAULT \'00:00:00\',
    `fld_dttim1_zztests` datetime DEFAULT \'1000-01-01 00:00:00\',
    `fld_color1_zztests` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT \'{"subtype":"webcolor"}\',
+   `fld_email1_zztests` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT \'{"tests":{"email":true}}\',
    `fld_tsupd_zztests` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\',
    `fld_tscrt_zztests` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\',
    `fld_cntupd_zztests` bigint(20) unsigned NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_zztests`),
    UNIQUE KEY `k_title32` (`fld_title32_zztests`)
- ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=\'{"remote":false}\'';
+ ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__zztests'.mysqli_error($dbLink) ) );
@@ -289,7 +290,7 @@ if($err==0){
    `fld_cntupd_todos` int(11) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_todos`),
    KEY `k_user` (`fld_id_user_todos`)
- ) ENGINE=MyISAM AUTO_INCREMENT=127 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=MyISAM AUTO_INCREMENT=129 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl_todos'.mysqli_error($dbLink) ) );

@@ -1187,6 +1187,107 @@ if($err==0){
 
 if($err==0){
 
+ $sql='TRUNCATE `tdo_tbl_todos` ';
+ if(!($result=mysqli_query($dbLink,$sql))){
+  $err=1;
+  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl_todos'.mysqli_error($dbLink) ) );
+  exit();
+ }
+}
+if($err==0){
+
+ $par=array(
+  'table'           => 'tdo_tbl_todos' ,
+  'file'            => 'sql_data___tbl_todos.txt' ,
+  'listeDesChamps'  => '`fld_id_todos` , `fld_priority_todos` , `fld_id_user_todos` , `fld_title_todos` , `fld_comment_todos` , `fld_tsupd_todos` , `fld_tscrt_todos` , `fld_cntupd_todos`' ,
+  'tabChamps'       => array (
+  0 => 
+  array (
+    0 => 'fld_id_todos',
+    1 => 'bigint(20) unsigned',
+    2 => 'NO',
+    3 => 'PRI',
+    4 => NULL,
+    5 => 'auto_increment',
+  ),
+  1 => 
+  array (
+    0 => 'fld_priority_todos',
+    1 => 'int(2) unsigned zerofill',
+    2 => 'NO',
+    3 => '',
+    4 => '00',
+    5 => '',
+  ),
+  2 => 
+  array (
+    0 => 'fld_id_user_todos',
+    1 => 'bigint(20) unsigned',
+    2 => 'NO',
+    3 => 'MUL',
+    4 => '0',
+    5 => '',
+  ),
+  3 => 
+  array (
+    0 => 'fld_title_todos',
+    1 => 'varchar(64)',
+    2 => 'NO',
+    3 => '',
+    4 => 'todo',
+    5 => '',
+  ),
+  4 => 
+  array (
+    0 => 'fld_comment_todos',
+    1 => 'text',
+    2 => 'YES',
+    3 => '',
+    4 => NULL,
+    5 => '',
+  ),
+  5 => 
+  array (
+    0 => 'fld_tsupd_todos',
+    1 => 'datetime',
+    2 => 'NO',
+    3 => '',
+    4 => '1000-01-01 00:00:00',
+    5 => '',
+  ),
+  6 => 
+  array (
+    0 => 'fld_tscrt_todos',
+    1 => 'datetime',
+    2 => 'NO',
+    3 => '',
+    4 => '1000-01-01 00:00:00',
+    5 => '',
+  ),
+  7 => 
+  array (
+    0 => 'fld_cntupd_todos',
+    1 => 'int(11)',
+    2 => 'NO',
+    3 => '',
+    4 => '0',
+    5 => '',
+  ),
+) ,
+  'dbLink'          => $dbLink ,
+  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+ );
+ $retCsv=integrerCsv($par);
+ if($retCsv['status']!='OK'){
+  $err=1;
+  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl_todos' ) );
+  exit();
+ }
+
+}
+
+if($err==0){
+
  $sql='TRUNCATE `tdo_tbl_uploadeddocs` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
