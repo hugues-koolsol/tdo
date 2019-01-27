@@ -43,7 +43,7 @@ if(isset($_POST['action']) && $_POST['action']=='step1'){
    header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode('I cannot connect to the local database server') );
    exit();   
   }else{
-   mysqli_set_charset( $dbLink , 'utf8' );
+   mysqli_set_charset( $dbLink , 'utf8mb4' );
    $_SESSION[PGMK]['server']=$_POST['server'];
    $_SESSION[PGMK]['user']=$_POST['user'];
    $_SESSION[PGMK]['password']=$_POST['password'];
@@ -69,7 +69,7 @@ if(isset($_POST['action']) && $_POST['action']=='step2'){
    header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot connect to the local database server') );
    exit();
   }else{
-   mysqli_set_charset( $dbLink , 'utf8' );
+   mysqli_set_charset( $dbLink , 'utf8mb4' );
    $sql='CREATE DATABASE `'.$_SESSION[PGMK]['appkey'].'` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci';
    $res6=@mysqli_query($dbLink,$sql);
    if(mysqli_errno($dbLink)==0){
@@ -237,7 +237,7 @@ if(isset($_POST['action']) && $_POST['action']=='step7'){
   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot connect to the local database server') );
   exit();
  }else{
-  mysqli_set_charset( $dbLink , 'utf8' );
+  mysqli_set_charset( $dbLink , 'utf8mb4' );
   $rootPassword=buildPassword();
   $optionsHash = array('cost'=>12);
   $passWordHash=password_hash($rootPassword, PASSWORD_BCRYPT, $optionsHash);

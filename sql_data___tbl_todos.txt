@@ -1,51 +1,57 @@
-"88";"90";"1";"exemple de table";"-- use utf8mb4_unicode_ci for text, varchar, ...
+"88";"90";"1";"exemple de création de table, table creation example";"-- use utf8mb4_unicode_ci for text, varchar, ...
 -- replace tdo by your key (xxx) in the table name
--- replace _zztests by the short name of the table
+-- replace _zzstests by the short name of the table
+-- replace _zzlongtests by the final part of the name of the table
 -- if NULL is possible in the definition of a field, then the field is not mandatory, otherwise, it is mandatory
 
 -- this is an example of a table create
 
-CREATE TABLE IF NOT EXISTS `tdo_tbl__zztests` (
+CREATE TABLE IF NOT EXISTS `tdo_tbl_zzlongtests` (
 
 -- key field, must be defined
-  `fld_id_zztests` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `fld_id_zzstests` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 
 
 -- yorno is yes or no, if it can be undefined then add \"unsetPossible\":true in the comment field 
-  `fld_yorno1_zztests` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '{\"param\":\"yorno\",\"unsetPossible\":true}',
+  `fld_yorno1_zzstests` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '{\"param\":\"yorno\",\"unsetPossible\":true}',
 
 
 -- a set of values is a list of checkboxes 
-  `fld_visited_countries_zztests` set('FR','US','GB','BE','KO','ES','JP') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '{\"param\":\"country\",\"set\":true}',
+  `fld_visited_countries_zzstests` set('FR','US','GB','BE','KO','ES','JP') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '{\"param\":\"country\",\"set\":true}',
 
 -- a dropdown representing a list of countries, a country can be undefined because \"unsetPossible\":true here
-  `fld_country1_zztests` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'FR' COMMENT '{\"param\":\"country\",\"dropDown\":\"true\",\"unsetPossible\":true}',
+  `fld_country1_zzstests` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'FR' COMMENT '{\"param\":\"country\",\"dropDown\":\"true\",\"unsetPossible\":true}',
 
 -- a text field, when you want to delete a field, this field value is shown
-  `fld_title32_zztests` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '{\"showDeleteField\":true}',
+  `fld_title32_zzstests` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '{\"showDeleteField\":true}',
 
 -- a link to a parent table, you must define a link between tables in this case
-  `fld_id_parent_zztests` bigint(20) UNSIGNED DEFAULT NULL,
+  `fld_id_parent_zzstests` bigint(20) UNSIGNED DEFAULT NULL,
 
 
-  `fld_date1_zztests` date DEFAULT '1000-01-01',
-  `fld_time1_zztests` time DEFAULT '00:00:00',
-  `fld_dttim1_zztests` datetime DEFAULT '1000-01-01 00:00:00',
-  `fld_color1_zztests` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '{\"subtype\":\"webcolor\"}',
+  `fld_date1_zzstests` date DEFAULT '1000-01-01',
+  `fld_time1_zzstests` time DEFAULT '00:00:00',
+  `fld_dttim1_zzstests` datetime DEFAULT '1000-01-01 00:00:00',
+  `fld_color1_zzstests` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '{\"subtype\":\"webcolor\"}',
 
 -- a test for an email field
-  `fld_email1_zztests` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '{\"tests\":{\"email\":true}}',
+  `fld_email1_zzstests` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '{\"tests\":{\"email\":true}}',
 
 -- These 3 fields are not mandatory but it is better if they are present
-  `fld_tsupd_zztests` datetime NOT NULL DEFAULT '1000-01-01 00:00:00',
-  `fld_tscrt_zztests` datetime NOT NULL DEFAULT '1000-01-01 00:00:00',
-  `fld_cntupd_zztests` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
 
-  PRIMARY KEY (`fld_id_zztests`),
-  UNIQUE KEY `k_title32` (`fld_title32_zztests`)
+-- These fields are updated by the application and NOT with statdard mysql ON UPDATE because it is easier to maintain values
+-- when tou need to do global updates
+  `fld_tsupd_zzstests` datetime NOT NULL DEFAULT '1000-01-01 00:00:00',
+  `fld_tscrt_zzstests` datetime NOT NULL DEFAULT '1000-01-01 00:00:00',
+
+-- this field is used to control concurent update
+  `fld_cntupd_zzstests` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+
+  PRIMARY KEY (`fld_id_zzstests`),
+  UNIQUE KEY `k_title32` (`fld_title32_zzstests`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
 
-";"2019-01-26 13:10:21";"2017-11-16 21:09:21";"24"
+";"2019-01-27 12:13:32";"2017-11-16 21:09:21";"28"
 "117";"90";"1";"regex notepad++ to transform the txt2() function call to txt1() ";"txt2\\(('.[^.]*)\\_([0-9]{1,5})\\_([0-9]{1,5})'\\)
 txt1\\($1'\\)
 
@@ -61,18 +67,25 @@ txt1('bla bla')
 http://www.fileformat.info/info/unicode/block/index.htm
 
 &é~'{}'()[]-|è`_\\ç^ à@°+=¨µ*%ù§!/:.;?,<>¤£²
-L’essai a-t-il été concluant ? modif 1 € , un backtick => ` “Guillemets bizarres” de « word » ‘ça passe ?′ ‘’‚‛“”„‰…•!\"#$%&'()*+,-./:;<=>?[\\]^_`{|}~°®©¡£¤¥¦§¨©ª «ÉÈËÊ¿¾½¼»±²³´µ·¸¹ºæ÷ αβγδεζηθικμνξοπρςστυφχψω ℅™€⅓⅔⅛⅜⅝⅞♠♣♥♦♪♫'...
+L’essai a-t-il été concluant ? modif 1 € , un backtick => ` “Guillemets bizarres” de « word » ‘ça passe ?′ ‘’‚‛“”„‰…•!\"#$%&'()*+,-./:;<=>?[\\]^_`{|}~°®©¡£¤¥¦§¨©ª «ÉÈËÊ¿¾½¼»±²³´µ·¸¹ºæ÷ αβγδεζηθικμνξοπρςστυφχψω ℅™€⅓⅔⅛⅜⅝⅞♠♣♥♦♪♫'
+𝌆,💩 : these are 4 byte utf8 encoding, see https://mathiasbynens.be/notes/mysql-utf8mb4
+
+utf8mb4 exists since MySQL 5.5.3 (released in early 2010) and you should use only this
 
 Problem with utf8 : 
-1°) copy and paste all the text line under into notepad++
+1°) copy and paste all the text line under into notepad++ and you will see that the two \"a\" with accents are not visually the same, it is the same for other characters
+
 à=>à,â=>â,ã=>ã,á=>á,é=>é,è=>è,ê=>ê,É=>É,ï=>ï,î=>î,ñ=>ñ,Ñ=>Ñ,ó=>ó,ô=>ô,ö=>ö,ü=>ü,Ü=>Ü,
+
 2°) there is a different encoding for the two \"a\" with accent \"`\" (à=>à)
 one is a%CC%%80 ( kind of a + \"backspace\" + accent ) and the other one is %C3%A0 ( utf8 for à )
+
 They are visually the same on google chrome and both are valid utf-8 encoding.
+
 3°) only the second \"à\" is valid for searches . for example if you look for
 déjà with the first \"é\" , il will not be founded.
 
-So the function addslashes1 fix the problem ( partially for some characters ) to put the utf8 encoding
+So the function addslashes1 fix the problem ( partially for some characters ) to put the right utf8 encoding
 
-This function is not used for this comment on purpose !
-";"2019-01-26 14:42:40";"2018-02-07 12:12:01";"25"
+This function is not used for this table on the comment field on purpose !
+";"2019-01-27 12:59:48";"2018-02-07 12:12:01";"33"

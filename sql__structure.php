@@ -7,7 +7,7 @@ if(!$dbLink){
  header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot connect to the local database server') );
  exit();
 };
-mysqli_set_charset( $dbLink , 'utf8' );
+mysqli_set_charset( $dbLink , 'utf8mb4' );
 if($err==0){
 
  $sql='CREATE TABLE `tdo_tbl__css` (
@@ -230,7 +230,7 @@ if($err==0){
  $sql='CREATE TABLE `tdo_tbl__users` (
    `fld_id_users` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
    `fld_login_users` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'\' COMMENT \'{"showDeleteField":true}\',
-   `fld_email_users` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'\',
+   `fld_email_users` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'\' COMMENT \'{"tests":{"email":true}}\',
    `fld_loginisemail_users` tinyint(4) NOT NULL DEFAULT \'0\' COMMENT \'{"param":"yorno"}\',
    `fld_password_users` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'\',
    `fld_group_id_users` bigint(20) NOT NULL DEFAULT \'1\',
