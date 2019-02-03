@@ -883,7 +883,7 @@ if($err==0){
   3 => 
   array (
     0 => 'fld_parent_field_display_pglnks',
-    1 => 'varchar(64)',
+    1 => 'varchar(255)',
     2 => 'NO',
     3 => '',
     4 => '',
