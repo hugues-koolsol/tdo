@@ -970,7 +970,7 @@ if($err==0){
  $par=array(
   'table'           => 'tdo_tbl__tables' ,
   'file'            => 'sql_data___tbl__tables.txt' ,
-  'listeDesChamps'  => '`fld_id_tables` , `fld_id_server_tables` , `fld_name_tables` , `fld_tsupd_tables` , `fld_tscrt_tables` , `fld_cntupd_tables`' ,
+  'listeDesChamps'  => '`fld_id_tables` , `fld_id_server_tables` , `fld_name_tables` , `fld_system_tables` , `fld_tsupd_tables` , `fld_tscrt_tables` , `fld_cntupd_tables`' ,
   'tabChamps'       => array (
   0 => 
   array (
@@ -1001,6 +1001,15 @@ if($err==0){
   ),
   3 => 
   array (
+    0 => 'fld_system_tables',
+    1 => 'char(1)',
+    2 => 'NO',
+    3 => '',
+    4 => '0',
+    5 => '',
+  ),
+  4 => 
+  array (
     0 => 'fld_tsupd_tables',
     1 => 'datetime',
     2 => 'NO',
@@ -1008,7 +1017,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  4 => 
+  5 => 
   array (
     0 => 'fld_tscrt_tables',
     1 => 'datetime',
@@ -1017,7 +1026,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  5 => 
+  6 => 
   array (
     0 => 'fld_cntupd_tables',
     1 => 'int(11)',
