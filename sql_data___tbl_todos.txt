@@ -1,4 +1,4 @@
-"88";"90";"1";"exemple de création de table, table creation example";"-- use utf8mb4_unicode_ci for text, varchar, ...
+"88";"90";"1";"exemple de création de table, table creation example";"-- use utf8mb4_unicode_ci for text, varchar, ... ( https://www.google.com/search?q=mysql+utf8mb4+vs+utf8 )
 -- replace tdo by your key (xxx) in the table name
 -- replace _zzstests by the short name of the table
 -- replace _zzlongtests by the final part of the name of the table
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `tdo_tbl_zzlongtests` (
   UNIQUE KEY `k_title32` (`fld_title32_zzstests`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
 
-";"2019-01-27 12:13:32";"2017-11-16 21:09:21";"28"
+";"2019-02-24 18:20:06";"2017-11-16 21:09:21";"29"
 "117";"90";"1";"regex notepad++ to transform the txt2() function call to txt1() ";"txt2\\(('.[^.]*)\\_([0-9]{1,5})\\_([0-9]{1,5})'\\)
 txt1\\($1'\\)
 
