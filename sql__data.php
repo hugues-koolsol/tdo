@@ -3,10 +3,10 @@
 
 
 $err=0;
-$dbLink=mysqli_connect($_SESSION[PGMK]['server'],$_SESSION[PGMK]['user'],$_SESSION[PGMK]['password'],$_SESSION[PGMK]['appkey']);
+$dbLink=mysqli_connect($_SESSION[PGMK]['server'],$_SESSION[PGMK]['user'],$_SESSION[PGMK]['password'],$_SESSION[PGMK]['database']);
 if(!$dbLink){
  $err=1;
- header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot connect to the local database server') );
+ header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot connect to the local database server') );
  exit();
 };
 
@@ -16,7 +16,7 @@ if($err==0){
  $sql='TRUNCATE `tdo_tbl__css` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl__css'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl__css'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -110,12 +110,12 @@ if($err==0){
   ),
 ) ,
   'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
  );
  $retCsv=integrerCsv($par);
  if($retCsv['status']!='OK'){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl__css' ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__css' ) );
   exit();
  }
 
@@ -126,7 +126,7 @@ if($err==0){
  $sql='TRUNCATE `tdo_tbl__groups` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl__groups'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl__groups'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -202,12 +202,12 @@ if($err==0){
   ),
 ) ,
   'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
  );
  $retCsv=integrerCsv($par);
  if($retCsv['status']!='OK'){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl__groups' ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__groups' ) );
   exit();
  }
 
@@ -218,7 +218,7 @@ if($err==0){
  $sql='TRUNCATE `tdo_tbl__grpspgs` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl__grpspgs'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl__grpspgs'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -303,12 +303,12 @@ if($err==0){
   ),
 ) ,
   'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
  );
  $retCsv=integrerCsv($par);
  if($retCsv['status']!='OK'){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl__grpspgs' ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__grpspgs' ) );
   exit();
  }
 
@@ -319,7 +319,7 @@ if($err==0){
  $sql='TRUNCATE `tdo_tbl__langvalues` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl__langvalues'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl__langvalues'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -413,12 +413,12 @@ if($err==0){
   ),
 ) ,
   'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
  );
  $retCsv=integrerCsv($par);
  if($retCsv['status']!='OK'){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl__langvalues' ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__langvalues' ) );
   exit();
  }
 
@@ -429,7 +429,7 @@ if($err==0){
  $sql='TRUNCATE `tdo_tbl__pages` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl__pages'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl__pages'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -550,12 +550,12 @@ if($err==0){
   ),
 ) ,
   'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
  );
  $retCsv=integrerCsv($par);
  if($retCsv['status']!='OK'){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl__pages' ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__pages' ) );
   exit();
  }
 
@@ -566,7 +566,7 @@ if($err==0){
  $sql='TRUNCATE `tdo_tbl__paramnames` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl__paramnames'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl__paramnames'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -669,12 +669,12 @@ if($err==0){
   ),
 ) ,
   'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
  );
  $retCsv=integrerCsv($par);
  if($retCsv['status']!='OK'){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl__paramnames' ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__paramnames' ) );
   exit();
  }
 
@@ -685,7 +685,7 @@ if($err==0){
  $sql='TRUNCATE `tdo_tbl__paramrules` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl__paramrules'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl__paramrules'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -752,12 +752,12 @@ if($err==0){
   ),
 ) ,
   'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
  );
  $retCsv=integrerCsv($par);
  if($retCsv['status']!='OK'){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl__paramrules' ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__paramrules' ) );
   exit();
  }
 
@@ -768,7 +768,7 @@ if($err==0){
  $sql='TRUNCATE `tdo_tbl__paramvalues` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl__paramvalues'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl__paramvalues'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -826,12 +826,12 @@ if($err==0){
   ),
 ) ,
   'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
  );
  $retCsv=integrerCsv($par);
  if($retCsv['status']!='OK'){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl__paramvalues' ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__paramvalues' ) );
   exit();
  }
 
@@ -842,7 +842,7 @@ if($err==0){
  $sql='TRUNCATE `tdo_tbl__tablelinks` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl__tablelinks'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl__tablelinks'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -945,12 +945,12 @@ if($err==0){
   ),
 ) ,
   'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
  );
  $retCsv=integrerCsv($par);
  if($retCsv['status']!='OK'){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl__tablelinks' ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__tablelinks' ) );
   exit();
  }
 
@@ -961,7 +961,7 @@ if($err==0){
  $sql='TRUNCATE `tdo_tbl__tables` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl__tables'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl__tables'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -970,7 +970,7 @@ if($err==0){
  $par=array(
   'table'           => 'tdo_tbl__tables' ,
   'file'            => 'sql_data___tbl__tables.txt' ,
-  'listeDesChamps'  => '`fld_id_tables` , `fld_id_server_tables` , `fld_name_tables` , `fld_system_tables` , `fld_tsupd_tables` , `fld_tscrt_tables` , `fld_cntupd_tables`' ,
+  'listeDesChamps'  => '`fld_id_tables` , `fld_id_server_tables` , `fld_name_tables` , `fld_system_tables` , `fld_view_tables` , `fld_tsupd_tables` , `fld_tscrt_tables` , `fld_cntupd_tables`' ,
   'tabChamps'       => array (
   0 => 
   array (
@@ -1010,6 +1010,15 @@ if($err==0){
   ),
   4 => 
   array (
+    0 => 'fld_view_tables',
+    1 => 'int(11)',
+    2 => 'NO',
+    3 => '',
+    4 => '0',
+    5 => '',
+  ),
+  5 => 
+  array (
     0 => 'fld_tsupd_tables',
     1 => 'datetime',
     2 => 'NO',
@@ -1017,7 +1026,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  5 => 
+  6 => 
   array (
     0 => 'fld_tscrt_tables',
     1 => 'datetime',
@@ -1026,7 +1035,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  6 => 
+  7 => 
   array (
     0 => 'fld_cntupd_tables',
     1 => 'int(11)',
@@ -1037,12 +1046,12 @@ if($err==0){
   ),
 ) ,
   'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
  );
  $retCsv=integrerCsv($par);
  if($retCsv['status']!='OK'){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl__tables' ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__tables' ) );
   exit();
  }
 
@@ -1053,7 +1062,7 @@ if($err==0){
  $sql='TRUNCATE `tdo_tbl__users` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl__users'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl__users'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -1183,12 +1192,12 @@ if($err==0){
   ),
 ) ,
   'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
  );
  $retCsv=integrerCsv($par);
  if($retCsv['status']!='OK'){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl__users' ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__users' ) );
   exit();
  }
 
@@ -1199,7 +1208,7 @@ if($err==0){
  $sql='TRUNCATE `tdo_tbl_todos` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl_todos'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl_todos'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -1284,12 +1293,12 @@ if($err==0){
   ),
 ) ,
   'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
  );
  $retCsv=integrerCsv($par);
  if($retCsv['status']!='OK'){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl_todos' ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl_todos' ) );
   exit();
  }
 
@@ -1300,7 +1309,7 @@ if($err==0){
  $sql='TRUNCATE `tdo_tbl_uploadeddocs` ';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot truncate the table tdo_tbl_uploadeddocs'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl_uploadeddocs'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -1421,12 +1430,12 @@ if($err==0){
   ),
 ) ,
   'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['appkey'] ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
  );
  $retCsv=integrerCsv($par);
  if($retCsv['status']!='OK'){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot fill the table tdo_tbl_uploadeddocs' ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl_uploadeddocs' ) );
   exit();
  }
 

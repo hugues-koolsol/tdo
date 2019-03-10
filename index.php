@@ -6,7 +6,7 @@ session_start();
 //==============================================================================================
 if(isset($_POST['action']) && $_POST['action']=='unsetSession'){
  unset($_SESSION[PGMK]);
- header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode('Unset session OK'));
+ header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode(__LINE__ . ' Unset session OK'));
  exit();
 }
 //==============================================================================================
@@ -17,7 +17,7 @@ if(isset($_POST['action']) && $_POST['action']=='step1'){
  if($err==0){
   if(strlen($_POST['appkey'])!=3){
    $err=1;
-   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode('the application key must contain 3 characters in the range a-z'));
+   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' the application key must contain 3 characters in the range a-z'));
    exit();
   }  
  }
@@ -32,7 +32,7 @@ if(isset($_POST['action']) && $_POST['action']=='step1'){
   }
   if($err==1){
    $err=1;
-   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode('the application key must contain 3 characters in the range a-z'));
+   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' the application key must contain 3 characters in the range a-z'));
    exit();
   }
  }
@@ -40,7 +40,7 @@ if(isset($_POST['action']) && $_POST['action']=='step1'){
   $dbLink=mysqli_connect($_POST['server'],$_POST['user'],$_POST['password']);
   if(!$dbLink){
    $err=1;
-   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode('I cannot connect to the local database server') );
+   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot connect to the local database server') );
    exit();   
   }else{
    mysqli_set_charset( $dbLink , 'utf8mb4' );
@@ -49,12 +49,48 @@ if(isset($_POST['action']) && $_POST['action']=='step1'){
    $_SESSION[PGMK]['password']=$_POST['password'];
   }
  }
- if($err==0){
-  $_SESSION[PGMK]['step']=2;
- }
- header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode('Connection OK'));
- exit();
  
+ if($_POST['database']!=''){
+  $_SESSION[PGMK]['database']=$_POST['database'];
+  $dbLink=mysqli_connect($_SESSION[PGMK]['server'],$_SESSION[PGMK]['user'],$_SESSION[PGMK]['password'],$_POST['database']);
+  if(!$dbLink){
+   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot connect to the database "'.$_POST['database'].'" ') );
+   exit();   
+  }
+  $sql59='SHOW TABLES LIKE \''.$_SESSION[PGMK]['appkey'].'\\_tbl\\_%\'';  
+  if(!($result=mysqli_query($dbLink,$sql59))){
+   $err=1;
+   header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot check the system tables' ) );
+   exit();
+  }
+  $data0=array();
+  while($mpsr59=mysqli_fetch_row($result59)){
+   $data0[]=array(
+   'table_name' =>$mpsr6[0],
+   );
+  }
+  if(count($data0)!=0){
+   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' some system tables like '.$_SESSION[PGMK]['appkey'].'_tbl_% already exist in the database "'.$_POST['database'].'" ') );   
+   exit();
+  }
+ }else{
+  $_SESSION[PGMK]['database']=$_POST['appkey'];  
+ }
+ 
+ if($err==0){
+  if($_POST['database']!=''){
+   $_SESSION[PGMK]['step']=3;
+   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode(__LINE__ . ' Connection OK and database "'.$_POST['database'].'" already exists,').'<br />'.urlencode(__LINE__ . '  skipping step 2'));
+   exit();
+  }else{
+   $_SESSION[PGMK]['step']=2;
+   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode(__LINE__ . ' Connection OK'));
+   exit();
+  }
+ }else{
+  header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode(__LINE__ . ' Connection KO'));
+  exit();
+ } 
 }
 
 //==============================================================================================
@@ -76,18 +112,19 @@ if(isset($_POST['action']) && $_POST['action']=='step2'){
     $_SESSION[PGMK]['step']=3;
    }else{
     $err=1;
-    header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the database' . mysqli_error($dbLink) ) );
+    header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot create the database' . mysqli_error($dbLink) ) );
     exit();
    }
   }
  } 
- header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode('Database created OK'));
+ header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode(__LINE__ . ' Database created OK'));
  exit();
 }
 
 //==============================================================================================
 if(isset($_POST['action']) && $_POST['action']=='step3'){
 // echo __FILE__ . ' ' . __LINE__ . ' __LINE__ = <pre>' . var_export( __LINE__ , true ) . '</pre>' ; exit(0);
+ $dbName=$_SESSION[PGMK]['database'];
  $err=0;
  if($err==0){
   
@@ -120,7 +157,7 @@ if(isset($_POST['action']) && $_POST['action']=='step3'){
    $za->close();
    if($ret===false){
     $err=1;
-    header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode('I cannot unzip tdo.zip' ) );
+    header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot unzip tdo.zip' ) );
     exit();
    }else{
     if($_SESSION[PGMK]['appkey']!='tdo'){
@@ -128,7 +165,7 @@ if(isset($_POST['action']) && $_POST['action']=='step3'){
      foreach( $arrRen as $k1 => $v1){
       if(!rename ( 'tdo_'.$v1 , $_SESSION[PGMK]['appkey'].'_'.$v1)){
        $err=1;
-       header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode('I cannot rename ' . $v1 ) );
+       header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot rename ' . $v1 ) );
       }
      }
     }
@@ -141,10 +178,10 @@ if(isset($_POST['action']) && $_POST['action']=='step3'){
      $newParam.='$GLOBALS[\'glob_db\'][0][\'server\']   =\''.$_SESSION[PGMK]['server']   .'\';'."\r\n"; 
      $newParam.='$GLOBALS[\'glob_db\'][0][\'user\']     =\''.$_SESSION[PGMK]['user']     .'\';'."\r\n";
      $newParam.='$GLOBALS[\'glob_db\'][0][\'password\'] =\''.$_SESSION[PGMK]['password'] .'\';'."\r\n";
-     $newParam.='$GLOBALS[\'glob_db\'][0][\'dbname\']   =\''.$_SESSION[PGMK]['appkey']   .'\';'."\r\n";
+     $newParam.='$GLOBALS[\'glob_db\'][0][\'dbname\']   =\''.$dbName .'\';'."\r\n";
      $newParam.='$GLOBALS[\'glob_db\'][0][\'link\']     =null;';
-     if($fdparam=fopen('tdo_inc/__dbaccess.php','w')){
-       fwrite($fdparam,$newParam);
+     if($fdparam=fopen($_SESSION[PGMK]['appkey'].'_inc/__dbaccess.php','w')){
+      fwrite($fdparam,$newParam);
       fclose($fdparam);
      }
     }
@@ -152,11 +189,11 @@ if(isset($_POST['action']) && $_POST['action']=='step3'){
    }
   }else{
    $err=1;
-   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode('I cannot open tdo.zip' ) );
+   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot open tdo.zip' ) );
    exit();
   }
  }
- header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode('Files unzipped OK'));
+ header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode(__LINE__ . ' Files unzipped OK'));
  exit();
 }
 
@@ -164,7 +201,7 @@ if(isset($_POST['action']) && $_POST['action']=='step3'){
 if(isset($_POST['action']) && $_POST['action']=='step4'){
  include('sql__structure.php');
  $_SESSION[PGMK]['step']=5; 
- header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode('Tables created OK'));
+ header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode(__LINE__ . ' Tables created OK'));
  exit();
 }
 
@@ -172,7 +209,7 @@ if(isset($_POST['action']) && $_POST['action']=='step4'){
 if(isset($_POST['action']) && $_POST['action']=='step5'){
  include('sql__data.php');
  $_SESSION[PGMK]['step']=6; 
- header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode('data insert OK'));
+ header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode(__LINE__ . ' data insert OK'));
  exit();
 }
 
@@ -220,7 +257,7 @@ if(isset($_POST['action']) && $_POST['action']=='step6'){
   
  }
  $_SESSION[PGMK]['step']=7;
- header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode('special setup OK'));
+ header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode(__LINE__ . ' special setup OK'));
  exit();
 }
 //==============================================================================================
@@ -241,7 +278,7 @@ if(isset($_POST['action']) && $_POST['action']=='step7'){
   $rootPassword=buildPassword();
   $optionsHash = array('cost'=>12);
   $passWordHash=password_hash($rootPassword, PASSWORD_BCRYPT, $optionsHash);
-  $sql='UPDATE `'.$_SESSION[PGMK]['appkey'].'`.`'.$_SESSION[PGMK]['appkey'].'_tbl__users` SET `fld_password_users` = \''.addslashes($passWordHash).'\' WHERE `fld_id_users` = 1 ';
+  $sql='UPDATE `'.$_SESSION[PGMK]['database'].'`.`'.$_SESSION[PGMK]['appkey'].'_tbl__users` SET `fld_password_users` = \''.addslashes($passWordHash).'\' WHERE `fld_id_users` = 1 ';
   $res6=@mysqli_query($dbLink,$sql);
   if(mysqli_errno($dbLink)==0){
    @unlink('index.php');
@@ -253,7 +290,7 @@ if(isset($_POST['action']) && $_POST['action']=='step7'){
    exit();
   }else{
    $err=1;
-   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode('I cannot update the root password' . mysqli_error($dbLink) ) );
+   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot update the root password' . mysqli_error($dbLink) ) );
    exit();
   }
  }
@@ -303,12 +340,20 @@ if(!isset($_SESSION[PGMK]['step']) || $_SESSION[PGMK]['step']==1){
   $o1.='<p>';
   $o1.='Enter a 3 character key for the application in the range a-z';
   $o1.='<br />';
+
   $val=isset($_SESSION[PGMK]['appkey'])?$_SESSION[PGMK]['appkey']:'aaa';
   $o1.='<input type="text" value="'.$val.'" name="appkey" size="3" maxlength="3"/>';
   $o1.='<br />';
-  $o1.='A local database will be created with the name xxx  where xxx is the application key';
+  $o1.='<p>';
+  $o1.='Enter a name of the database to use or live it void';
   $o1.='<br />';
-  $o1.='The table names will start with xxx_ where xxx is the application key';
+  unset($_SESSION[PGMK]['database']);
+  $val=isset($_SESSION[PGMK]['database'])?$_SESSION[PGMK]['database']:'';
+  $o1.='<input type="text" value="'.$val.'" name="database" size="30" maxlength="64"/>';
+  $o1.='<br />';
+  $o1.='If you live it void, a local database will be created with the name xxx  where xxx is the application key';
+  $o1.='<br />';
+  $o1.='The new table names that are use by this system will start with xxx_tbl_ where xxx is the application key';
   $o1.='</p>';
 
   $o1.='<p>';

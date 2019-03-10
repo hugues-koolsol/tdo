@@ -89,3 +89,36 @@ So the function addslashes1 fix the problem ( partially for some characters ) to
 
 This function is not used for this table on the comment field on purpose !
 ";"2019-01-27 12:59:48";"2018-02-07 12:12:01";"33"
+"150";"91";"1";"example of a view";"CREATE VIEW address_list
+AS
+SELECT `a`.`address_id` AS `ID`    , concat( `a`.`address` , ' ' , `a`.`address2` ) as `address` , `a`.`postal_code` AS `zip code` , 
+       `city`.`city`    AS `city`  , `country`.`country`                            AS `country` , `a`.`phone`       AS `phone`	           
+FROM   `address` AS a 
+       JOIN `city`    ON `a`.`city_id`       = `city`.`city_id`
+       JOIN `country` ON `city`.`country_id` = `country`.`country_id`;";"2019-03-07 19:31:18";"2019-03-07 19:31:18";"0"
+"156";"92";"1";"examples of comments to add in database";"{\"param\":\"yorno\",\"unsetPossible\":true} // yes or no or undefined
+{\"param\":\"yorno\"}                      // yes or no but not undefined
+{\"param\":\"name_of_the_parameter\"} 
+{\"param\":\"country\",\"set\":true}         // the field is a mysql set type in the database
+
+{\"subtype\":\"password\"}                 // the \"password\" type in html
+{\"subtype\":\"webcolor\"}                 // a color selector
+{\"subtype\":\"pictureInDb\"}              // for a mysql blob that contains a picture
+
+{\"tests\":{\"email\":true}}               // if input is an email, it checks the validity of this email
+
+{\"showDeleteField\":true}               // display the content of this field when ask for deletion
+{\"view_key_for\":[\"view_name\"]}         // tell that this field is a key for that view
+
+// ==============================
+// example of combined parameters
+// ==============================
+
+// a parameter can be displayed on a delete form 
+{\"param\":\"yorno\",\"unsetPossible\":true,\"showDeleteField\":true}
+
+ // the default for a parameter is input type=\"radio\", if you want a select, put : \"dropDown\":\"true\"
+{\"param\":\"country\",\"dropDown\":\"true\",\"unsetPossible\":true}
+
+
+{\"param\":\"yorno\",\"unsetPossible\":false}";"2019-03-09 15:28:07";"2019-03-09 15:01:52";"7"

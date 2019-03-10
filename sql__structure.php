@@ -1,10 +1,10 @@
 <?php
 //============== STRUCTURE =====================================================
 $err=0;
-$dbLink=mysqli_connect($_SESSION[PGMK]['server'],$_SESSION[PGMK]['user'],$_SESSION[PGMK]['password'],$_SESSION[PGMK]['appkey']);
+$dbLink=mysqli_connect($_SESSION[PGMK]['server'],$_SESSION[PGMK]['user'],$_SESSION[PGMK]['password'],$_SESSION[PGMK]['database']);
 if(!$dbLink){
  $err=1;
- header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot connect to the local database server') );
+ header('Location: '.BNF.'?errormessage='.urlencode(__FILE__ . ' ' . __LINE__ . ' I cannot connect to the local database server') );
  exit();
 };
 mysqli_set_charset( $dbLink , 'utf8mb4' );
@@ -25,7 +25,7 @@ if($err==0){
  ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__css'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__css'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -45,7 +45,7 @@ if($err==0){
  ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__groups'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__groups'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -63,10 +63,10 @@ if($err==0){
    PRIMARY KEY (`fld_id_grpspgs`),
    UNIQUE KEY `k_grppag` (`fld_group_id_grpspgs`,`fld_page_id_grpspgs`),
    KEY `fk_page_of_grppgs` (`fld_page_id_grpspgs`)
- ) ENGINE=MyISAM AUTO_INCREMENT=147 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=MyISAM AUTO_INCREMENT=163 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__grpspgs'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__grpspgs'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -87,7 +87,7 @@ if($err==0){
  ) ENGINE=MyISAM AUTO_INCREMENT=2236 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__langvalues'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__langvalues'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -103,7 +103,7 @@ if($err==0){
  ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__log'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__log'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -124,10 +124,10 @@ if($err==0){
    `fld_cntupd_pages` bigint(20) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_pages`),
    UNIQUE KEY `k_pages1` (`fld_name_pages`)
- ) ENGINE=MyISAM AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=MyISAM AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__pages'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__pages'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -149,7 +149,7 @@ if($err==0){
  ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__paramnames'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__paramnames'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -167,7 +167,7 @@ if($err==0){
  ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__paramrules'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__paramrules'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -183,7 +183,7 @@ if($err==0){
  ) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__paramvalues'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__paramvalues'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -204,7 +204,7 @@ if($err==0){
  ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__tablelinks'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__tablelinks'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -215,6 +215,7 @@ if($err==0){
    `fld_id_server_tables` int(11) NOT NULL DEFAULT \'0\',
    `fld_name_tables` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'\' COMMENT \'{"showDeleteField":true}\',
    `fld_system_tables` char(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'0\' COMMENT \'{"param":"yorno"}\',
+   `fld_view_tables` int(11) NOT NULL DEFAULT \'0\' COMMENT \'{"param":"yorno"}\',
    `fld_tsupd_tables` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\',
    `fld_tscrt_tables` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\',
    `fld_cntupd_tables` int(11) NOT NULL DEFAULT \'0\',
@@ -222,7 +223,7 @@ if($err==0){
  ) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__tables'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__tables'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -248,7 +249,7 @@ if($err==0){
  ) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__users'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__users'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -275,7 +276,7 @@ if($err==0){
  ) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl__zztests'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__zztests'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -292,10 +293,10 @@ if($err==0){
    `fld_cntupd_todos` int(11) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_todos`),
    KEY `k_user` (`fld_id_user_todos`)
- ) ENGINE=MyISAM AUTO_INCREMENT=150 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=MyISAM AUTO_INCREMENT=157 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl_todos'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl_todos'.mysqli_error($dbLink) ) );
   exit();
  }
 }
@@ -318,7 +319,7 @@ if($err==0){
  ) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode('I cannot create the table tdo_tbl_uploadeddocs'.mysqli_error($dbLink) ) );
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl_uploadeddocs'.mysqli_error($dbLink) ) );
   exit();
  }
 }
