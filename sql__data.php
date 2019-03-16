@@ -970,7 +970,7 @@ if($err==0){
  $par=array(
   'table'           => 'tdo_tbl__tables' ,
   'file'            => 'sql_data___tbl__tables.txt' ,
-  'listeDesChamps'  => '`fld_id_tables` , `fld_id_server_tables` , `fld_name_tables` , `fld_system_tables` , `fld_view_tables` , `fld_tsupd_tables` , `fld_tscrt_tables` , `fld_cntupd_tables`' ,
+  'listeDesChamps'  => '`fld_id_tables` , `fld_id_server_tables` , `fld_name_tables` , `fld_system_tables` , `fld_view_tables` , `fld_id_reftbl_of_view_tables` , `fld_log_tables` , `fld_tsupd_tables` , `fld_tscrt_tables` , `fld_cntupd_tables`' ,
   'tabChamps'       => array (
   0 => 
   array (
@@ -1019,6 +1019,24 @@ if($err==0){
   ),
   5 => 
   array (
+    0 => 'fld_id_reftbl_of_view_tables',
+    1 => 'bigint(20)',
+    2 => 'YES',
+    3 => '',
+    4 => NULL,
+    5 => '',
+  ),
+  6 => 
+  array (
+    0 => 'fld_log_tables',
+    1 => 'tinyint(4)',
+    2 => 'NO',
+    3 => '',
+    4 => NULL,
+    5 => '',
+  ),
+  7 => 
+  array (
     0 => 'fld_tsupd_tables',
     1 => 'datetime',
     2 => 'NO',
@@ -1026,7 +1044,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  6 => 
+  8 => 
   array (
     0 => 'fld_tscrt_tables',
     1 => 'datetime',
@@ -1035,7 +1053,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  7 => 
+  9 => 
   array (
     0 => 'fld_cntupd_tables',
     1 => 'int(11)',
@@ -1052,6 +1070,244 @@ if($err==0){
  if($retCsv['status']!='OK'){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__tables' ) );
+  exit();
+ }
+
+}
+
+if($err==0){
+
+ $sql='TRUNCATE `tdo_tbl__todos` ';
+ if(!($result=mysqli_query($dbLink,$sql))){
+  $err=1;
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl__todos'.mysqli_error($dbLink) ) );
+  exit();
+ }
+}
+if($err==0){
+
+ $par=array(
+  'table'           => 'tdo_tbl__todos' ,
+  'file'            => 'sql_data___tbl__todos.txt' ,
+  'listeDesChamps'  => '`fld_id_todos` , `fld_priority_todos` , `fld_id_user_todos` , `fld_title_todos` , `fld_comment_todos` , `fld_tsupd_todos` , `fld_tscrt_todos` , `fld_cntupd_todos`' ,
+  'tabChamps'       => array (
+  0 => 
+  array (
+    0 => 'fld_id_todos',
+    1 => 'bigint(20) unsigned',
+    2 => 'NO',
+    3 => 'PRI',
+    4 => NULL,
+    5 => 'auto_increment',
+  ),
+  1 => 
+  array (
+    0 => 'fld_priority_todos',
+    1 => 'int(2) unsigned zerofill',
+    2 => 'NO',
+    3 => '',
+    4 => '00',
+    5 => '',
+  ),
+  2 => 
+  array (
+    0 => 'fld_id_user_todos',
+    1 => 'bigint(20) unsigned',
+    2 => 'NO',
+    3 => 'MUL',
+    4 => '0',
+    5 => '',
+  ),
+  3 => 
+  array (
+    0 => 'fld_title_todos',
+    1 => 'varchar(64)',
+    2 => 'NO',
+    3 => '',
+    4 => 'todo',
+    5 => '',
+  ),
+  4 => 
+  array (
+    0 => 'fld_comment_todos',
+    1 => 'text',
+    2 => 'YES',
+    3 => '',
+    4 => NULL,
+    5 => '',
+  ),
+  5 => 
+  array (
+    0 => 'fld_tsupd_todos',
+    1 => 'datetime',
+    2 => 'NO',
+    3 => '',
+    4 => '1000-01-01 00:00:00',
+    5 => '',
+  ),
+  6 => 
+  array (
+    0 => 'fld_tscrt_todos',
+    1 => 'datetime',
+    2 => 'NO',
+    3 => '',
+    4 => '1000-01-01 00:00:00',
+    5 => '',
+  ),
+  7 => 
+  array (
+    0 => 'fld_cntupd_todos',
+    1 => 'int(11)',
+    2 => 'NO',
+    3 => '',
+    4 => '0',
+    5 => '',
+  ),
+) ,
+  'dbLink'          => $dbLink ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
+ );
+ $retCsv=integrerCsv($par);
+ if($retCsv['status']!='OK'){
+  $err=1;
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__todos' ) );
+  exit();
+ }
+
+}
+
+if($err==0){
+
+ $sql='TRUNCATE `tdo_tbl__uploadeddocs` ';
+ if(!($result=mysqli_query($dbLink,$sql))){
+  $err=1;
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl__uploadeddocs'.mysqli_error($dbLink) ) );
+  exit();
+ }
+}
+if($err==0){
+
+ $par=array(
+  'table'           => 'tdo_tbl__uploadeddocs' ,
+  'file'            => 'sql_data___tbl__uploadeddocs.txt' ,
+  'listeDesChamps'  => '`fld_id_uploadedDocs` , `fld_name_uploadedDocs` , `fld_originalName_uploadedDocs` , `fld_isPicture_uploadedDocs` , `fld_pictureWidth_uploadedDocs` , `fld_pictureHeight_uploadedDocs` , `fld_documentType_uploadedDocs` , `fld_pictureWeight_uploadedDocs` , `fld_path_uploadedDocs` , `fld_tsupd_uploadedDocs` , `fld_tscrt_uploadedDocs` , `fld_cntupd_uploadedDocs`' ,
+  'tabChamps'       => array (
+  0 => 
+  array (
+    0 => 'fld_id_uploadedDocs',
+    1 => 'bigint(20) unsigned',
+    2 => 'NO',
+    3 => 'PRI',
+    4 => NULL,
+    5 => 'auto_increment',
+  ),
+  1 => 
+  array (
+    0 => 'fld_name_uploadedDocs',
+    1 => 'varchar(128)',
+    2 => 'NO',
+    3 => '',
+    4 => '',
+    5 => '',
+  ),
+  2 => 
+  array (
+    0 => 'fld_originalName_uploadedDocs',
+    1 => 'varchar(256)',
+    2 => 'NO',
+    3 => '',
+    4 => '',
+    5 => '',
+  ),
+  3 => 
+  array (
+    0 => 'fld_isPicture_uploadedDocs',
+    1 => 'varchar(16)',
+    2 => 'NO',
+    3 => '',
+    4 => NULL,
+    5 => '',
+  ),
+  4 => 
+  array (
+    0 => 'fld_pictureWidth_uploadedDocs',
+    1 => 'bigint(20) unsigned',
+    2 => 'NO',
+    3 => '',
+    4 => '0',
+    5 => '',
+  ),
+  5 => 
+  array (
+    0 => 'fld_pictureHeight_uploadedDocs',
+    1 => 'bigint(20) unsigned',
+    2 => 'NO',
+    3 => '',
+    4 => '0',
+    5 => '',
+  ),
+  6 => 
+  array (
+    0 => 'fld_documentType_uploadedDocs',
+    1 => 'varchar(16)',
+    2 => 'NO',
+    3 => '',
+    4 => NULL,
+    5 => '',
+  ),
+  7 => 
+  array (
+    0 => 'fld_pictureWeight_uploadedDocs',
+    1 => 'bigint(20) unsigned',
+    2 => 'NO',
+    3 => '',
+    4 => '0',
+    5 => '',
+  ),
+  8 => 
+  array (
+    0 => 'fld_path_uploadedDocs',
+    1 => 'varchar(256)',
+    2 => 'NO',
+    3 => '',
+    4 => '',
+    5 => '',
+  ),
+  9 => 
+  array (
+    0 => 'fld_tsupd_uploadedDocs',
+    1 => 'datetime',
+    2 => 'NO',
+    3 => '',
+    4 => '1000-01-01 00:00:00',
+    5 => '',
+  ),
+  10 => 
+  array (
+    0 => 'fld_tscrt_uploadedDocs',
+    1 => 'datetime',
+    2 => 'NO',
+    3 => '',
+    4 => '1000-01-01 00:00:00',
+    5 => '',
+  ),
+  11 => 
+  array (
+    0 => 'fld_cntupd_uploadedDocs',
+    1 => 'bigint(20) unsigned',
+    2 => 'NO',
+    3 => '',
+    4 => '0',
+    5 => '',
+  ),
+) ,
+  'dbLink'          => $dbLink ,
+  'dbName'          => $_SESSION[PGMK]['database'] ,
+ );
+ $retCsv=integrerCsv($par);
+ if($retCsv['status']!='OK'){
+  $err=1;
+  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__uploadeddocs' ) );
   exit();
  }
 
@@ -1198,244 +1454,6 @@ if($err==0){
  if($retCsv['status']!='OK'){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl__users' ) );
-  exit();
- }
-
-}
-
-if($err==0){
-
- $sql='TRUNCATE `tdo_tbl_todos` ';
- if(!($result=mysqli_query($dbLink,$sql))){
-  $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl_todos'.mysqli_error($dbLink) ) );
-  exit();
- }
-}
-if($err==0){
-
- $par=array(
-  'table'           => 'tdo_tbl_todos' ,
-  'file'            => 'sql_data___tbl_todos.txt' ,
-  'listeDesChamps'  => '`fld_id_todos` , `fld_priority_todos` , `fld_id_user_todos` , `fld_title_todos` , `fld_comment_todos` , `fld_tsupd_todos` , `fld_tscrt_todos` , `fld_cntupd_todos`' ,
-  'tabChamps'       => array (
-  0 => 
-  array (
-    0 => 'fld_id_todos',
-    1 => 'bigint(20) unsigned',
-    2 => 'NO',
-    3 => 'PRI',
-    4 => NULL,
-    5 => 'auto_increment',
-  ),
-  1 => 
-  array (
-    0 => 'fld_priority_todos',
-    1 => 'int(2) unsigned zerofill',
-    2 => 'NO',
-    3 => '',
-    4 => '00',
-    5 => '',
-  ),
-  2 => 
-  array (
-    0 => 'fld_id_user_todos',
-    1 => 'bigint(20) unsigned',
-    2 => 'NO',
-    3 => 'MUL',
-    4 => '0',
-    5 => '',
-  ),
-  3 => 
-  array (
-    0 => 'fld_title_todos',
-    1 => 'varchar(64)',
-    2 => 'NO',
-    3 => '',
-    4 => 'todo',
-    5 => '',
-  ),
-  4 => 
-  array (
-    0 => 'fld_comment_todos',
-    1 => 'text',
-    2 => 'YES',
-    3 => '',
-    4 => NULL,
-    5 => '',
-  ),
-  5 => 
-  array (
-    0 => 'fld_tsupd_todos',
-    1 => 'datetime',
-    2 => 'NO',
-    3 => '',
-    4 => '1000-01-01 00:00:00',
-    5 => '',
-  ),
-  6 => 
-  array (
-    0 => 'fld_tscrt_todos',
-    1 => 'datetime',
-    2 => 'NO',
-    3 => '',
-    4 => '1000-01-01 00:00:00',
-    5 => '',
-  ),
-  7 => 
-  array (
-    0 => 'fld_cntupd_todos',
-    1 => 'int(11)',
-    2 => 'NO',
-    3 => '',
-    4 => '0',
-    5 => '',
-  ),
-) ,
-  'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['database'] ,
- );
- $retCsv=integrerCsv($par);
- if($retCsv['status']!='OK'){
-  $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl_todos' ) );
-  exit();
- }
-
-}
-
-if($err==0){
-
- $sql='TRUNCATE `tdo_tbl_uploadeddocs` ';
- if(!($result=mysqli_query($dbLink,$sql))){
-  $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot truncate the table tdo_tbl_uploadeddocs'.mysqli_error($dbLink) ) );
-  exit();
- }
-}
-if($err==0){
-
- $par=array(
-  'table'           => 'tdo_tbl_uploadeddocs' ,
-  'file'            => 'sql_data___tbl_uploadeddocs.txt' ,
-  'listeDesChamps'  => '`fld_id_uploadedDocs` , `fld_name_uploadedDocs` , `fld_originalName_uploadedDocs` , `fld_isPicture_uploadedDocs` , `fld_pictureWidth_uploadedDocs` , `fld_pictureHeight_uploadedDocs` , `fld_documentType_uploadedDocs` , `fld_pictureWeight_uploadedDocs` , `fld_path_uploadedDocs` , `fld_tsupd_uploadedDocs` , `fld_tscrt_uploadedDocs` , `fld_cntupd_uploadedDocs`' ,
-  'tabChamps'       => array (
-  0 => 
-  array (
-    0 => 'fld_id_uploadedDocs',
-    1 => 'bigint(20) unsigned',
-    2 => 'NO',
-    3 => 'PRI',
-    4 => NULL,
-    5 => 'auto_increment',
-  ),
-  1 => 
-  array (
-    0 => 'fld_name_uploadedDocs',
-    1 => 'varchar(128)',
-    2 => 'NO',
-    3 => '',
-    4 => '',
-    5 => '',
-  ),
-  2 => 
-  array (
-    0 => 'fld_originalName_uploadedDocs',
-    1 => 'varchar(256)',
-    2 => 'NO',
-    3 => '',
-    4 => '',
-    5 => '',
-  ),
-  3 => 
-  array (
-    0 => 'fld_isPicture_uploadedDocs',
-    1 => 'varchar(16)',
-    2 => 'NO',
-    3 => '',
-    4 => NULL,
-    5 => '',
-  ),
-  4 => 
-  array (
-    0 => 'fld_pictureWidth_uploadedDocs',
-    1 => 'bigint(20) unsigned',
-    2 => 'NO',
-    3 => '',
-    4 => '0',
-    5 => '',
-  ),
-  5 => 
-  array (
-    0 => 'fld_pictureHeight_uploadedDocs',
-    1 => 'bigint(20) unsigned',
-    2 => 'NO',
-    3 => '',
-    4 => '0',
-    5 => '',
-  ),
-  6 => 
-  array (
-    0 => 'fld_documentType_uploadedDocs',
-    1 => 'varchar(16)',
-    2 => 'NO',
-    3 => '',
-    4 => NULL,
-    5 => '',
-  ),
-  7 => 
-  array (
-    0 => 'fld_pictureWeight_uploadedDocs',
-    1 => 'bigint(20) unsigned',
-    2 => 'NO',
-    3 => '',
-    4 => '0',
-    5 => '',
-  ),
-  8 => 
-  array (
-    0 => 'fld_path_uploadedDocs',
-    1 => 'varchar(256)',
-    2 => 'NO',
-    3 => '',
-    4 => '',
-    5 => '',
-  ),
-  9 => 
-  array (
-    0 => 'fld_tsupd_uploadedDocs',
-    1 => 'datetime',
-    2 => 'NO',
-    3 => '',
-    4 => '1000-01-01 00:00:00',
-    5 => '',
-  ),
-  10 => 
-  array (
-    0 => 'fld_tscrt_uploadedDocs',
-    1 => 'datetime',
-    2 => 'NO',
-    3 => '',
-    4 => '1000-01-01 00:00:00',
-    5 => '',
-  ),
-  11 => 
-  array (
-    0 => 'fld_cntupd_uploadedDocs',
-    1 => 'bigint(20) unsigned',
-    2 => 'NO',
-    3 => '',
-    4 => '0',
-    5 => '',
-  ),
-) ,
-  'dbLink'          => $dbLink ,
-  'dbName'          => $_SESSION[PGMK]['database'] ,
- );
- $retCsv=integrerCsv($par);
- if($retCsv['status']!='OK'){
-  $err=1;
-  header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . 'I cannot fill the table tdo_tbl_uploadeddocs' ) );
   exit();
  }
 
