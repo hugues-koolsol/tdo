@@ -89,7 +89,7 @@ So the function addslashes1 fix the problem ( partially for some characters ) to
 
 This function is not used for this table on the comment field on purpose !
 ";"2019-01-27 12:59:48";"2018-02-07 12:12:01";"33"
-"150";"93";"1";"example of a view";"{\"view_key_for\":[\"view_name\"]}
+"150";"93";"1";"example of a view";"{\"view_key_for\":[\"xxx_address_list\"]} on key_autoincrement_field
 
 CREATE VIEW xxx_address_list
 AS
@@ -97,7 +97,7 @@ SELECT `a`.`address_id` AS `ID`    , concat( `a`.`address` , ' ' , `a`.`address2
        `city`.`city`    AS `city`  , `country`.`country`                            AS `country` , `a`.`phone`       AS `phone`	           
 FROM   `address` AS a 
        JOIN `city`    ON `a`.`city_id`       = `city`.`city_id`
-       JOIN `country` ON `city`.`country_id` = `country`.`country_id`;";"2019-03-15 17:08:11";"2019-03-07 19:31:18";"2"
+       JOIN `country` ON `city`.`country_id` = `country`.`country_id`;";"2019-03-17 15:02:19";"2019-03-07 19:31:18";"3"
 "156";"94";"1";"examples of comments to add in database";"{\"param\":\"yorno\",\"unsetPossible\":true} // yes or no or undefined
 {\"param\":\"yorno\"}                      // yes or no but not undefined
 {\"param\":\"name_of_the_parameter\"} 

@@ -10,4 +10,4 @@
 "12";"10";"fld_id_tables";"fld_name_tables";"9";"fld_children_table_id_pglnks";"1";"2017-12-04 20:41:05";"2017-11-20 16:34:12";"10"
 "13";"6";"fld_id_parnams";"fld_label_parnams";"18";"fld_id_param_parrules";"1";"2018-11-22 14:58:19";"2018-11-22 14:58:19";"0"
 "14";"10";"fld_id_tables";"fld_name_tables";"10";"fld_id_reftbl_of_view_tables";"0";"2019-03-12 17:59:12";"2019-03-12 17:59:12";"0"
-"15";"1";"fld_id_groups";"fld_name_groups,fld_isactive_groups";"2";"fld_group_id_grpspgs";"1";"2019-03-16 20:24:49";"2019-03-16 20:24:49";"0"
+"15";"1";"fld_id_groups";"fld_name_groups,fld_isactive_groups";"2";"fld_group_id_grpspgs";"1";"2019-03-17 14:47:40";"2019-03-16 20:24:49";"2"
