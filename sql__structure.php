@@ -22,7 +22,7 @@ if($err==0){
    `fld_cntupd_css` bigint(20) unsigned NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_css`),
    UNIQUE KEY `k_name` (`fld_name_css`)
- ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__css'.mysqli_error($dbLink) ) );
@@ -84,7 +84,7 @@ if($err==0){
    `fld_cntupd_lngVals` int(11) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_lngVals`),
    UNIQUE KEY `k_page_key_lang` (`fld_key_lngVals`,`fld_lang_lngVals`,`fld_page_id_lngVals`,`fld_type_lngVals`) USING BTREE
- ) ENGINE=InnoDB AUTO_INCREMENT=2423 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=2450 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__langvalues'.mysqli_error($dbLink) ) );
@@ -103,7 +103,7 @@ if($err==0){
    `fld_typ_log` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'1\' COMMENT \'{"param":"log"}\',
    `fld_tag_log` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
    PRIMARY KEY (`fld_id_log`)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__log'.mysqli_error($dbLink) ) );
@@ -127,7 +127,7 @@ if($err==0){
    `fld_cntupd_pages` bigint(20) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_pages`),
    UNIQUE KEY `k_pages1` (`fld_name_pages`)
- ) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__pages'.mysqli_error($dbLink) ) );
@@ -221,6 +221,7 @@ if($err==0){
    `fld_view_tables` int(11) NOT NULL DEFAULT \'0\' COMMENT \'{"param":"yorno"}\',
    `fld_id_reftbl_of_view_tables` bigint(20) DEFAULT NULL,
    `fld_log_tables` tinyint(4) NOT NULL COMMENT \'{"param":"yorno"}\',
+   `fld_remote_tables` tinyint(4) NOT NULL DEFAULT \'1\' COMMENT \'{"param":"yorno"}\',
    `fld_tsupd_tables` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\',
    `fld_tscrt_tables` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\',
    `fld_cntupd_tables` int(11) NOT NULL DEFAULT \'0\',
@@ -237,7 +238,7 @@ if($err==0){
  $sql='CREATE TABLE `tdo_tbl__todos` (
    `fld_id_todos` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
    `fld_priority_todos` int(2) unsigned zerofill NOT NULL DEFAULT \'00\',
-   `fld_id_user_todos` bigint(20) unsigned NOT NULL DEFAULT \'0\',
+   `fld_id_user_todos` bigint(20) unsigned NOT NULL DEFAULT \'0\' COMMENT \'{"isUser":true}\',
    `fld_title_todos` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'todo\' COMMENT \'{"showDeleteField":true}\',
    `fld_comment_todos` text COLLATE utf8mb4_unicode_ci,
    `fld_tsupd_todos` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\',
@@ -245,7 +246,7 @@ if($err==0){
    `fld_cntupd_todos` int(11) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_todos`),
    KEY `k_user` (`fld_id_user_todos`)
- ) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__todos'.mysqli_error($dbLink) ) );

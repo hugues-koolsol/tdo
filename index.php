@@ -28,12 +28,16 @@ if(isset($_POST['action']) && $_POST['action']=='step1'){
    if(!($c>='a' && $c <='z')){
     $err=1;
    }
-  
   }
   if($err==1){
    $err=1;
    header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' the application key must contain 3 characters in the range a-z'));
    exit();
+  }
+  if($_POST['appkey']=='tdo' || $_POST['appkey']=='old' || $_POST['appkey']=='inc' || $_POST['appkey']=='css' || $_POST['appkey']=='img' ){
+   $err=1;
+   header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' this application key is reserved'));
+   exit();   
   }
  }
  if($err==0){
@@ -161,17 +165,19 @@ if(isset($_POST['action']) && $_POST['action']=='step3'){
     exit();
    }else{
     if($_SESSION[PGMK]['appkey']!='tdo'){
-     $arrRen=array('cron','data','inc','_userdata','www');
+     $arrRen=array('www','inc','_no_version_control','cron');
      foreach( $arrRen as $k1 => $v1){
       if(!rename ( 'tdo_'.$v1 , $_SESSION[PGMK]['appkey'].'_'.$v1)){
        $err=1;
-       header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot rename ' . $v1 ) );
+       header("HTTP/1.1 303 See Other");
+       header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' I cannot rename ' . $v1 ) );
+       exit();
       }
      }
     }
     if($err==0){
      foreach( $arrRen as $k1 => $v1){
-      recurse_replaceContent($_SESSION[PGMK]['appkey'].'_'.$v1,'tdo',$_SESSION[PGMK]['appkey']);
+      recurse_replaceContent($_SESSION[PGMK]['appkey'].'_'.$v1,'t'.'do',$_SESSION[PGMK]['appkey']);
      }
      // replace db connexion parameters
      $newParam='<'.'?php'."\r\n"; // ,,
@@ -180,7 +186,7 @@ if(isset($_POST['action']) && $_POST['action']=='step3'){
      $newParam.='$GLOBALS[\'glob_db\'][0][\'password\'] =\''.$_SESSION[PGMK]['password'] .'\';'."\r\n";
      $newParam.='$GLOBALS[\'glob_db\'][0][\'dbname\']   =\''.$dbName .'\';'."\r\n";
      $newParam.='$GLOBALS[\'glob_db\'][0][\'link\']     =null;';
-     if($fdparam=fopen($_SESSION[PGMK]['appkey'].'_inc/__dbaccess.php','w')){
+     if($fdparam=fopen($_SESSION[PGMK]['appkey'].'__no_version_control/__dbaccess.php','w')){
       fwrite($fdparam,$newParam);
       fclose($fdparam);
      }
@@ -217,42 +223,48 @@ if(isset($_POST['action']) && $_POST['action']=='step5'){
 if(isset($_POST['action']) && $_POST['action']=='step6'){
  if((isset($_POST['isHttps']) && $_POST['isHttps']=='on') || (isset($_POST['incPathUnderRoot']) && $_POST['incPathUnderRoot']=='on')){
   
-  if(isset($_POST['isHttps']) && $_POST['isHttps']=='on'){
-   $arrFileInc=file($_SESSION[PGMK]['appkey'].'_www/za_inc.php');
+  // replace some variables in za_inc & zz_maintenance
+  $secretKeyForMaintenance=buildPassword(10);  
+  $tabFiles=array('za_inc.php','zz_maintenance.php');
+  foreach( $tabFiles as $k0 => $v0){
+   $arrFileInc=array();
+   $arrFileInc=file($_SESSION[PGMK]['appkey'].'_www/'.$v0);
    foreach($arrFileInc as $k1 => $v1){
-    if(substr($v1,0,30)=='$GLOBALS[\'glob_remoteIsHttps\']'){
-     $arrFileInc[$k1]='$GLOBALS[\'glob_remoteIsHttps\']         =true;'.CRLF;
+    
+    if(substr($v1,0,39)=='$GLOBALS[\'glob_incPathAreInSubFolders\']'){
+     if(isset($_POST['incPathUnderRoot']) && $_POST['incPathUnderRoot']=='on'){
+      $arrFileInc[$k1]='$GLOBALS[\'glob_incPathAreInSubFolders\']=true;'.CRLF;
+     }else{
+      $arrFileInc[$k1]='$GLOBALS[\'glob_incPathAreInSubFolders\']=false;'.CRLF;      
+     }
     }
+    
+    if(substr($v1,0,30)=='$GLOBALS[\'glob_remoteIsHttps\']'){
+     if(isset($_POST['isHttps']) && $_POST['isHttps']=='on'){
+      $arrFileInc[$k1]='$GLOBALS[\'glob_remoteIsHttps\']         =true;'.CRLF;
+     }else{
+      $arrFileInc[$k1]='$GLOBALS[\'glob_remoteIsHttps\']         =false;'.CRLF;      
+     }
+    }
+    
+    if(substr($v1,0,35)=='define(\'SECRET_KEY_FOR_MAINTENANCE\''){
+     $arrFileInc[$k1]='define(\'SECRET_KEY_FOR_MAINTENANCE\','.var_export($secretKeyForMaintenance,true).');'.CRLF;
+    }
+    
+    
    }
-   if($fdincphp=fopen($_SESSION[PGMK]['appkey'].'_www/za_inc.php','w')){ 
+   if($fdincphp=fopen($_SESSION[PGMK]['appkey'].'_www/'.$v0,'w')){ 
     foreach($arrFileInc as $k1 => $v1){
      fwrite($fdincphp, $v1 ); 
     }
     fclose($fdincphp); 
    }
   }
-  
   if(isset($_POST['incPathUnderRoot']) && $_POST['incPathUnderRoot']=='on'){
-   $tabFiles=array('za_inc.php','zz_maintenance.php');
-   foreach( $tabFiles as $k0 => $v0){
-    $arrFileInc=array();
-    $arrFileInc=file($_SESSION[PGMK]['appkey'].'_www/'.$v0);
-    foreach($arrFileInc as $k1 => $v1){
-     if(substr($v1,0,39)=='$GLOBALS[\'glob_incPathAreInSubFolders\']'){
-      $arrFileInc[$k1]='$GLOBALS[\'glob_incPathAreInSubFolders\']=true;'.CRLF;
-     }
-    }
-    if($fdincphp=fopen($_SESSION[PGMK]['appkey'].'_www/'.$v0,'w')){ 
-     foreach($arrFileInc as $k1 => $v1){
-      fwrite($fdincphp, $v1 ); 
-     }
-     fclose($fdincphp); 
-    }
-   }
-   rename($_SESSION[PGMK]['appkey'].'__userdata' , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'__userdata');
-   rename($_SESSION[PGMK]['appkey'].'_cron'      , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_cron');
-   rename($_SESSION[PGMK]['appkey'].'_data'      , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_data');
-   rename($_SESSION[PGMK]['appkey'].'_inc'       , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_inc');
+   rename($_SESSION[PGMK]['appkey'].'__no_version_control' , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'__no_version_control'  );
+   rename($_SESSION[PGMK]['appkey'].'_cron'                , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_cron'                 );
+   rename($_SESSION[PGMK]['appkey'].'_data'                , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_data'                 );
+   rename($_SESSION[PGMK]['appkey'].'_inc'                 , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_inc'                  );
   }
   
  }
@@ -275,7 +287,7 @@ if(isset($_POST['action']) && $_POST['action']=='step7'){
   exit();
  }else{
   mysqli_set_charset( $dbLink , 'utf8mb4' );
-  $rootPassword=buildPassword();
+  $rootPassword='root'; // option : use function buildPassword();
   $optionsHash = array('cost'=>12);
   $passWordHash=password_hash($rootPassword, PASSWORD_BCRYPT, $optionsHash);
   $sql='UPDATE `'.$_SESSION[PGMK]['database'].'`.`'.$_SESSION[PGMK]['appkey'].'_tbl__users` SET `fld_password_users` = \''.addslashes($passWordHash).'\' WHERE `fld_id_users` = 1 ';
@@ -343,6 +355,8 @@ if(!isset($_SESSION[PGMK]['step']) || $_SESSION[PGMK]['step']==1){
 
   $val=isset($_SESSION[PGMK]['appkey'])?$_SESSION[PGMK]['appkey']:'aaa';
   $o1.='<input type="text" value="'.$val.'" name="appkey" size="3" maxlength="3"/>';
+  $o1.='<br />';
+  $o1.='reserved application keys are : "tdo" "old" "inc" "css" "img"';
   $o1.='<br />';
   $o1.='<p>';
   $o1.='Enter a name of the database to use or live it void';
@@ -467,13 +481,14 @@ if(isset($_SESSION[PGMK]['step']) && $_SESSION[PGMK]['step']==6){
  $o1.='<input type="checkbox" id="isHttps" name="isHttps" style="transform:scale(2);">';
  $o1.='</label>';
  
- $o1.='<br /><br /><br />';
+ $o1.='<br /><br />';
 
- $o1.='<label for="incPathUnderRoot">';
+ $o1.='<label for="incPathUnderRoot" style="display:none;">';
  $o1.='Uncheck this if the include and data directories will be under the root directory instead of the www directory';
  $o1.='<br /><br />';
- $o1.='<input type="checkbox" id="incPathUnderRoot" name="incPathUnderRoot" checked="checked"  style="transform:scale(2);">';
+ $o1.='<input type="checkbox" id="incPathUnderRoot" name="incPathUnderRoot" checked="checked"  style="transform:scale(2);display:none;">';
  $o1.='</label>';
+ 
  $o1.='</p>';
  
  $o1.='<p>';
@@ -586,7 +601,8 @@ function footerHtml(){
  return $o1;
 }
 //========================================================================================================
-function buildPassword( $length = 8, $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!./,;*+%:\'{}[]' ) {
+function buildPassword( $length = 8, $chars = 'abcdefghjkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789!./,;*+%:\'{}[]-()&#?<>' ){
+ // some characters are taken off like i,l,I,1,0,O because they look the same
  return substr( str_shuffle( $chars ), 0, $length );
 }
 //========================================================================================================
