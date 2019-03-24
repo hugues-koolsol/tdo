@@ -103,7 +103,7 @@ if($err==0){
    `fld_typ_log` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'1\' COMMENT \'{"param":"log"}\',
    `fld_tag_log` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
    PRIMARY KEY (`fld_id_log`)
- ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__log'.mysqli_error($dbLink) ) );
@@ -246,7 +246,7 @@ if($err==0){
    `fld_cntupd_todos` int(11) NOT NULL DEFAULT \'0\',
    PRIMARY KEY (`fld_id_todos`),
    KEY `k_user` (`fld_id_user_todos`)
- ) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=211 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__todos'.mysqli_error($dbLink) ) );
