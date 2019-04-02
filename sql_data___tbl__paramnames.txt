@@ -59,7 +59,7 @@ Ceci ne doit pas être modifié à moins que vous sachiez ce que vous faites !";
         }
     ],
     \"id\": \"3\"
-}";"{\"fr\":{\"0\":\"50\",\"1\":\"51\",\"2\":\"52\",\"3\":\"53\",\"4\":\"54\",\"5\":\"55\",\"6\":\"56\"},\"en\":{\"0\":\"50\",\"1\":\"51\",\"2\":\"52\",\"3\":\"53\",\"4\":\"54\",\"5\":\"55\",\"6\":\"56\"}}";"0";"2018-05-29 14:34:42";"2019-03-18 18:16:15";"5"
+}";"{\"fr\":{\"0\":\"50\",\"1\":\"51\",\"2\":\"52\",\"3\":\"53\",\"4\":\"54\",\"5\":\"55\",\"6\":\"56\"},\"en\":{\"0\":\"50\",\"1\":\"51\",\"2\":\"52\",\"3\":\"53\",\"4\":\"54\",\"5\":\"55\",\"6\":\"56\"}}";"1";"2018-05-29 14:34:42";"2019-04-01 08:49:59";"6"
 "4";"log";"log type";"sql , error , information";"{
     \"comment\": \"This is an example\",
     \"key\": \"log_type\",
@@ -119,3 +119,44 @@ Ceci ne doit pas être modifié à moins que vous sachiez ce que vous faites !";
     ],
     \"id\": \"5\"
 }";"{\"fr\":{\"0\":\"43\",\"1\":\"62\",\"2\":\"46\",\"3\":\"49\",\"4\":\"41\",\"5\":\"40\",\"6\":\"42\",\"7\":\"57\"},\"en\":{\"0\":\"62\",\"1\":\"43\",\"2\":\"40\",\"3\":\"42\",\"4\":\"57\",\"5\":\"46\",\"6\":\"49\",\"7\":\"41\"}}";"1";"2017-10-03 20:31:04";"2019-03-18 18:15:55";"27"
+"6";"restore_transform";"transformation for restore";"Les dumps vers le format mysql sont fait sans encodage
+Les restaurations doivent avoir, dans certains cas des transformations d'encodage, voir la fonction the function import_csv() dans zz_restore1.php .
+les clés doibent être écrites avec ce format  :
+8859-15|UTF-8
+ce qui signifie dans ce cas :  de 8859-15 vers UTF-8.
+Un exemple de cette transformation est pour les tables de la base de donnée \"world\" du site web de mysql qui sont définies en latin1_swedish_ci
+
+
+The dumps are done without encoding transform.
+The restore must have, in some cases, an encoding transformation, see the use in the function import_csv() in zz_restore1.php.
+The keys must be written with this format :
+8859-15|UTF-8
+which means in this case from 8859-15 to UTF-8.
+An example of this transformation is for the tables of the database \"world\" from the mysql website which are defined in latin1_swedish_ci.
+";"{
+    \"comment\": \"encoding transform for restore\",
+    \"key\": \"restore_transform\",
+    \"fields\": [
+        {
+            \"name\": \"restore_transform\",
+            \"type\": \"char\",
+            \"length\": 32,
+            \"comment\": \"8859-15|UTF-8,8859-1|UTF-8,\"
+        },
+        {
+            \"name\": \"n\",
+            \"type\": \"char\",
+            \"length\": 64,
+            \"languageTranslation\": true,
+            \"comment1\": \"the transform name\"
+        }
+    ],
+    \"dependencies\": [
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__tables\",
+            \"field\": \"fld_restore_transform_tables\"
+        }
+    ],
+    \"id\": \"6\"
+}";"{\"fr\":{\"0\":\"67\",\"1\":\"66\"},\"en\":{\"0\":\"67\",\"1\":\"66\"}}";"0";"2019-04-01 09:00:27";"2019-04-01 09:20:14";"2"

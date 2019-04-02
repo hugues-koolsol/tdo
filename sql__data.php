@@ -970,7 +970,7 @@ if($err==0){
  $par=array(
   'table'           => 'tdo_tbl__tables' ,
   'file'            => 'sql_data___tbl__tables.txt' ,
-  'listeDesChamps'  => '`fld_id_tables` , `fld_id_server_tables` , `fld_name_tables` , `fld_system_tables` , `fld_view_tables` , `fld_id_reftbl_of_view_tables` , `fld_log_tables` , `fld_remote_tables` , `fld_tsupd_tables` , `fld_tscrt_tables` , `fld_cntupd_tables`' ,
+  'listeDesChamps'  => '`fld_id_tables` , `fld_id_server_tables` , `fld_name_tables` , `fld_system_tables` , `fld_view_tables` , `fld_id_reftbl_of_view_tables` , `fld_log_tables` , `fld_remote_tables` , `fld_restore_transform_tables` , `fld_tsupd_tables` , `fld_tscrt_tables` , `fld_cntupd_tables`' ,
   'tabChamps'       => array (
   0 => 
   array (
@@ -1046,6 +1046,15 @@ if($err==0){
   ),
   8 => 
   array (
+    0 => 'fld_restore_transform_tables',
+    1 => 'varchar(32)',
+    2 => 'NO',
+    3 => '',
+    4 => '',
+    5 => '',
+  ),
+  9 => 
+  array (
     0 => 'fld_tsupd_tables',
     1 => 'datetime',
     2 => 'NO',
@@ -1053,7 +1062,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  9 => 
+  10 => 
   array (
     0 => 'fld_tscrt_tables',
     1 => 'datetime',
@@ -1062,7 +1071,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  10 => 
+  11 => 
   array (
     0 => 'fld_cntupd_tables',
     1 => 'int(11)',
@@ -1199,7 +1208,7 @@ if($err==0){
  $par=array(
   'table'           => 'tdo_tbl__uploadeddocs' ,
   'file'            => 'sql_data___tbl__uploadeddocs.txt' ,
-  'listeDesChamps'  => '`fld_id_uploadedDocs` , `fld_name_uploadedDocs` , `fld_originalName_uploadedDocs` , `fld_isPicture_uploadedDocs` , `fld_pictureWidth_uploadedDocs` , `fld_pictureHeight_uploadedDocs` , `fld_documentType_uploadedDocs` , `fld_pictureWeight_uploadedDocs` , `fld_path_uploadedDocs` , `fld_tsupd_uploadedDocs` , `fld_tscrt_uploadedDocs` , `fld_cntupd_uploadedDocs`' ,
+  'listeDesChamps'  => '`fld_id_uploadedDocs` , `fld_name_uploadedDocs` , `fld_originalName_uploadedDocs` , `fld_isPicture_uploadedDocs` , `fld_pictureWidth_uploadedDocs` , `fld_pictureHeight_uploadedDocs` , `fld_documentType_uploadedDocs` , `fld_weight_uploadedDocs` , `fld_path_uploadedDocs` , `fld_userId_uploadedDocs` , `fld_tsupd_uploadedDocs` , `fld_tscrt_uploadedDocs` , `fld_cntupd_uploadedDocs`' ,
   'tabChamps'       => array (
   0 => 
   array (
@@ -1266,7 +1275,7 @@ if($err==0){
   ),
   7 => 
   array (
-    0 => 'fld_pictureWeight_uploadedDocs',
+    0 => 'fld_weight_uploadedDocs',
     1 => 'bigint(20) unsigned',
     2 => 'NO',
     3 => '',
@@ -1284,6 +1293,15 @@ if($err==0){
   ),
   9 => 
   array (
+    0 => 'fld_userId_uploadedDocs',
+    1 => 'bigint(20)',
+    2 => 'NO',
+    3 => '',
+    4 => '1',
+    5 => '',
+  ),
+  10 => 
+  array (
     0 => 'fld_tsupd_uploadedDocs',
     1 => 'datetime',
     2 => 'NO',
@@ -1291,7 +1309,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  10 => 
+  11 => 
   array (
     0 => 'fld_tscrt_uploadedDocs',
     1 => 'datetime',
@@ -1300,7 +1318,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  11 => 
+  12 => 
   array (
     0 => 'fld_cntupd_uploadedDocs',
     1 => 'bigint(20) unsigned',

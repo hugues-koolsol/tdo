@@ -185,7 +185,16 @@ if(isset($_POST['action']) && $_POST['action']=='step3'){
      $newParam.='$GLOBALS[\'glob_db\'][0][\'user\']     =\''.$_SESSION[PGMK]['user']     .'\';'."\r\n";
      $newParam.='$GLOBALS[\'glob_db\'][0][\'password\'] =\''.$_SESSION[PGMK]['password'] .'\';'."\r\n";
      $newParam.='$GLOBALS[\'glob_db\'][0][\'dbname\']   =\''.$dbName .'\';'."\r\n";
-     $newParam.='$GLOBALS[\'glob_db\'][0][\'link\']     =null;';
+     $newParam.='$GLOBALS[\'glob_db\'][0][\'setname\']  =\'utf8mb4\';'."\r\n";
+     $newParam.='$GLOBALS[\'glob_db\'][0][\'link\']     =null;'."\r\n\r\n\r\n";
+     $newParam.='/*'."\r\n";
+     $newParam.='$GLOBALS[\'glob_db\'][1][\'server\']   =\'other_or_same_server\';'."\r\n"; 
+     $newParam.='$GLOBALS[\'glob_db\'][1][\'user\']     =\'other_or_same_user\';'."\r\n";
+     $newParam.='$GLOBALS[\'glob_db\'][1][\'password\'] =\'other_or_same_password\';'."\r\n";
+     $newParam.='$GLOBALS[\'glob_db\'][1][\'dbname\']   =\'other_or_same_dbname\';'."\r\n";
+     $newParam.='$GLOBALS[\'glob_db\'][1][\'setname\']  =\'utf8mb4\';'."\r\n";
+     $newParam.='$GLOBALS[\'glob_db\'][1][\'link\']     =null;';
+     $newParam.='*/'."\r\n";
      if($fdparam=fopen($_SESSION[PGMK]['appkey'].'__no_version_control/__dbaccess.php','w')){
       fwrite($fdparam,$newParam);
       fclose($fdparam);
@@ -221,59 +230,42 @@ if(isset($_POST['action']) && $_POST['action']=='step5'){
 
 //==============================================================================================
 if(isset($_POST['action']) && $_POST['action']=='step6'){
- if((isset($_POST['isHttps']) && $_POST['isHttps']=='on') || (isset($_POST['incPathUnderRoot']) && $_POST['incPathUnderRoot']=='on')){
-  
-  // replace some variables in za_inc & zz_maintenance
-  $secretKeyForMaintenance=buildPassword(10);  
-  $tabFiles=array('za_inc.php','zz_maintenance.php');
-  foreach( $tabFiles as $k0 => $v0){
-   $arrFileInc=array();
-   $arrFileInc=file($_SESSION[PGMK]['appkey'].'_www/'.$v0);
+ // replace some variables in za_inc & zz_maintenance
+ $secretKeyForMaintenance=buildPassword(10);  
+ $tabFiles=array('za_inc.php','zz_maintenance.php');
+ foreach( $tabFiles as $k0 => $v0){
+  $arrFileInc=array();
+  $arrFileInc=file($_SESSION[PGMK]['appkey'].'_www/'.$v0);
+  foreach($arrFileInc as $k1 => $v1){
+   
+   if(substr($v1,0,39)=='$GLOBALS[\'glob_incPathAreInSubFolders\']'){
+    if(isset($_POST['incPathUnderRoot']) && $_POST['incPathUnderRoot']=='on'){
+     $arrFileInc[$k1]='$GLOBALS[\'glob_incPathAreInSubFolders\']=true;'.CRLF;
+    }else{
+     $arrFileInc[$k1]='$GLOBALS[\'glob_incPathAreInSubFolders\']=false;'.CRLF;      
+    }
+   }
+   
+   if(substr($v1,0,35)=='define(\'SECRET_KEY_FOR_MAINTENANCE\''){
+    $arrFileInc[$k1]='define(\'SECRET_KEY_FOR_MAINTENANCE\','.var_export($secretKeyForMaintenance,true).');'.CRLF;
+   }
+   
+   
+  }
+  if($fdincphp=fopen($_SESSION[PGMK]['appkey'].'_www/'.$v0,'w')){ 
    foreach($arrFileInc as $k1 => $v1){
-    
-    if(substr($v1,0,39)=='$GLOBALS[\'glob_incPathAreInSubFolders\']'){
-     if(isset($_POST['incPathUnderRoot']) && $_POST['incPathUnderRoot']=='on'){
-      $arrFileInc[$k1]='$GLOBALS[\'glob_incPathAreInSubFolders\']=true;'.CRLF;
-     }else{
-      $arrFileInc[$k1]='$GLOBALS[\'glob_incPathAreInSubFolders\']=false;'.CRLF;      
-     }
-    }
-    
-    if(substr($v1,0,30)=='$GLOBALS[\'glob_remoteIsHttps\']'){
-     if(isset($_POST['isHttps']) && $_POST['isHttps']=='on'){
-      $arrFileInc[$k1]='$GLOBALS[\'glob_remoteIsHttps\']         =true;'.CRLF;
-     }else{
-      $arrFileInc[$k1]='$GLOBALS[\'glob_remoteIsHttps\']         =false;'.CRLF;      
-     }
-    }
-    
-    if(substr($v1,0,35)=='define(\'SECRET_KEY_FOR_MAINTENANCE\''){
-     $arrFileInc[$k1]='define(\'SECRET_KEY_FOR_MAINTENANCE\','.var_export($secretKeyForMaintenance,true).');'.CRLF;
-    }
-    
-    
+    fwrite($fdincphp, $v1 ); 
    }
-   if($fdincphp=fopen($_SESSION[PGMK]['appkey'].'_www/'.$v0,'w')){ 
-    foreach($arrFileInc as $k1 => $v1){
-     fwrite($fdincphp, $v1 ); 
-    }
-    fclose($fdincphp); 
-   }
+   fclose($fdincphp); 
   }
-  if(isset($_POST['incPathUnderRoot']) && $_POST['incPathUnderRoot']=='on'){
-   rename($_SESSION[PGMK]['appkey'].'__no_version_control' , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'__no_version_control'  );
-   rename($_SESSION[PGMK]['appkey'].'_cron'                , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_cron'                 );
-   rename($_SESSION[PGMK]['appkey'].'_data'                , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_data'                 );
-   rename($_SESSION[PGMK]['appkey'].'_inc'                 , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_inc'                  );
-  }
-  
  }
- $_SESSION[PGMK]['step']=7;
- header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?message='.urlencode(__LINE__ . ' special setup OK'));
- exit();
-}
-//==============================================================================================
-if(isset($_POST['action']) && $_POST['action']=='step7'){
+ if(isset($_POST['incPathUnderRoot']) && $_POST['incPathUnderRoot']=='on'){
+  rename($_SESSION[PGMK]['appkey'].'__no_version_control' , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'__no_version_control'  );
+  rename($_SESSION[PGMK]['appkey'].'_cron'                , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_cron'                 );
+  rename($_SESSION[PGMK]['appkey'].'_data'                , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_data'                 );
+  rename($_SESSION[PGMK]['appkey'].'_inc'                 , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_inc'                  );
+ }
+ 
  $newAppKey=$_SESSION[PGMK]['appkey'];
  @unlink('tdo.zip');
  @unlink('sql__structure.php');
@@ -287,13 +279,21 @@ if(isset($_POST['action']) && $_POST['action']=='step7'){
   exit();
  }else{
   mysqli_set_charset( $dbLink , 'utf8mb4' );
-  $rootPassword='root'; // option : use function buildPassword();
+  $rootPassword='root'.mt_rand(100,999); // option : use function buildPassword();
   $optionsHash = array('cost'=>12);
   $passWordHash=password_hash($rootPassword, PASSWORD_BCRYPT, $optionsHash);
   $sql='UPDATE `'.$_SESSION[PGMK]['database'].'`.`'.$_SESSION[PGMK]['appkey'].'_tbl__users` SET `fld_password_users` = \''.addslashes($passWordHash).'\' WHERE `fld_id_users` = 1 ';
   $res6=@mysqli_query($dbLink,$sql);
   if(mysqli_errno($dbLink)==0){
-   @unlink('index.php');
+   unlink('index.php');
+   $newParam='<'.'?php'."\r\n"; // ,,
+   $newParam.='header(\'Status: 301 Moved Permanently\',false,301);'."\r\n";
+   $newParam.='header(\'Location: '.$newAppKey.'_www\');'."\r\n";
+   $newParam.='exit(0);';
+   if($fdparam=fopen('index.php','w')){
+    fwrite($fdparam,$newParam);
+    fclose($fdparam);
+   }
    $_SESSION[$newAppKey]['NAV']['login.php']['message'][]=' the password for root is '.$rootPassword;
    $redir='./'.$newAppKey.'_www/login.php';
    sleep(1);
@@ -306,10 +306,8 @@ if(isset($_POST['action']) && $_POST['action']=='step7'){
    exit();
   }
  }
- 
- 
- 
- header("HTTP/1.1 303 See Other");header('Location: '.$_SESSION[PGMK]['appkey'].'_www/login.php');
+ header("HTTP/1.1 303 See Other");
+ header('Location: '.$_SESSION[PGMK]['appkey'].'_www/login.php');
  exit();
 }
 
@@ -475,18 +473,11 @@ if(isset($_SESSION[PGMK]['step']) && $_SESSION[PGMK]['step']==6){
  
  
  $o1.='<p>';
- $o1.='<label for="isHttps">';
- $o1.='Check this if your application will be put on a http<span style="color:red;font-weight:bold;">s</span> domain ( on localhost, it has to be http )';
- $o1.='<br /><br />';
- $o1.='<input type="checkbox" id="isHttps" name="isHttps" style="transform:scale(2);">';
- $o1.='</label>';
  
- $o1.='<br /><br />';
-
  $o1.='<label for="incPathUnderRoot" style="display:none;">';
- $o1.='Uncheck this if the include and data directories will be under the root directory instead of the www directory';
+ $o1.='Check this if the include and data directories will be under the www directory instead of the root directory ( not recommended for git or svn )';
  $o1.='<br /><br />';
- $o1.='<input type="checkbox" id="incPathUnderRoot" name="incPathUnderRoot" checked="checked"  style="transform:scale(2);display:none;">';
+ $o1.='<input type="checkbox" id="incPathUnderRoot" name="incPathUnderRoot" style="transform:scale(2);display:none;">';
  $o1.='</label>';
  
  $o1.='</p>';
@@ -497,25 +488,9 @@ if(isset($_SESSION[PGMK]['step']) && $_SESSION[PGMK]['step']==6){
  $o1.='</form>';
  $o1.=razSessionForm();
 }
-//==============================================================================================
-
-
-if(isset($_SESSION[PGMK]['step']) && $_SESSION[PGMK]['step']==7){
- $o1.='<form method="post">';
- $o1.='<p>';
- $o1.='<h2>Step 7</h2>';
- $o1.='</p>';
-
- $o1.='<p>';
- $o1.='<button type="submit" name="action" value="step7">Finish</button>';
- $o1.='</p>';
- $o1.='</form>';
- $o1.=razSessionForm();
-}
-
 
 //==============================================================================================
-
+//==============================================================================================
 
 $o1.=footerHtml();
 echo $o1;
@@ -607,7 +582,6 @@ function buildPassword( $length = 8, $chars = 'abcdefghjkmnopqrstuvwxyzABCDEFGHJ
 }
 //========================================================================================================
 function integrerCsv($v1){
-
  $nombreInsertParGroupe=50;
  $retu=array('status' => 'KO' , 'debug' => array());
  mysqli_query($v1['dbLink'],'SET SESSION sql_mode=\'NO_AUTO_VALUE_ON_ZERO\'');
@@ -621,12 +595,9 @@ function integrerCsv($v1){
  if(($handle = fopen($v1['file'], 'r')) !== false){
   $countLines=0;
   while(($data=fgetcsv($handle, 0 , ';'  , '"'  )) !== false) { // no escape on php 5.2.17 sophiemallebranche.com
-  
-//   echo __FILE__ . ' ' . __LINE__ . ' $data =<pre>' . var_export( $data , true ) . '</pre>' ; exit();
    $numData=0;
    $sqldata='';
    foreach($v1['tabChamps'] as $k2 => $v2 ){
-//     echo __FILE__ . ' ' . __LINE__ . ' $v2 =<pre>' . var_export( $v2 , true ) . '</pre>' ; exit();
     $typeChamp=$v2[1];
     $nullAdmis=$v2[2]=='YES'?true:false;
     if(
@@ -675,7 +646,6 @@ function integrerCsv($v1){
    if($countLines==$nombreInsertParGroupe){
     $sqlinsert=$sqlinsertMain . $valueLines;
     mysqli_query($v1['dbLink'], $sqlinsert  );
-////    if($fd=fopen('toto.sql','a')){ fwrite($fd,$sqlinsert) ; fclose($fd); }
     if(mysqli_errno($v1['dbLink'])==0){
     }else{
      $retu['debug'][]=  __LINE__ . ' mysqli_error() = ' . mysqli_error($v1['dbLink']) . ' , pour $sqlinsert = ' . $sqlinsert ;
@@ -689,7 +659,6 @@ function integrerCsv($v1){
   fclose($handle);
   if($valueLines!=''){
    $sqlinsert=$sqlinsertMain . $valueLines;
-////   if($fd=fopen('toto.sql','a')){ fwrite($fd,$sqlinsert) ; fclose($fd); }
    mysqli_query($v1['dbLink'], $sqlinsert  );
    if(mysqli_errno($v1['dbLink'])==0){
    }else{
