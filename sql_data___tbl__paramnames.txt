@@ -118,7 +118,7 @@ Ceci ne doit pas être modifié à moins que vous sachiez ce que vous faites !";
         }
     ],
     \"id\": \"5\"
-}";"{\"fr\":{\"0\":\"43\",\"1\":\"62\",\"2\":\"46\",\"3\":\"49\",\"4\":\"41\",\"5\":\"40\",\"6\":\"42\",\"7\":\"57\"},\"en\":{\"0\":\"62\",\"1\":\"43\",\"2\":\"40\",\"3\":\"42\",\"4\":\"57\",\"5\":\"46\",\"6\":\"49\",\"7\":\"41\"}}";"1";"2017-10-03 20:31:04";"2019-03-18 18:15:55";"27"
+}";"{\"fr\":{\"0\":\"43\",\"1\":\"62\",\"2\":\"40\",\"3\":\"42\",\"4\":\"57\",\"5\":\"46\",\"6\":\"49\",\"7\":\"41\"},\"en\":{\"0\":\"62\",\"1\":\"43\",\"2\":\"40\",\"3\":\"42\",\"4\":\"57\",\"5\":\"46\",\"6\":\"49\",\"7\":\"41\"}}";"1";"2017-10-03 20:31:04";"2019-03-18 18:15:55";"27"
 "6";"restore_transform";"transformation for restore";"Les dumps vers le format mysql sont fait sans encodage
 Les restaurations doivent avoir, dans certains cas des transformations d'encodage, voir la fonction the function import_csv() dans zz_restore1.php .
 les clés doibent être écrites avec ce format  :
@@ -160,3 +160,30 @@ An example of this transformation is for the tables of the database \"world\" fr
     ],
     \"id\": \"6\"
 }";"{\"fr\":{\"0\":\"67\",\"1\":\"66\"},\"en\":{\"0\":\"67\",\"1\":\"66\"}}";"0";"2019-04-01 09:00:27";"2019-04-01 09:20:14";"2"
+"7";"group_category";"Group category";NULL;"{
+    \"comment\": \"group categories for users\",
+    \"key\": \"group_category\",
+    \"fields\": [
+        {
+            \"name\": \"group_category\",
+            \"type\": \"char\",
+            \"length\": 32,
+            \"comment\": \"root,anonymous,local_admin,user\"
+        },
+        {
+            \"name\": \"n\",
+            \"type\": \"char\",
+            \"length\": 64,
+            \"languageTranslation\": true,
+            \"comment1\": \"the transform name\"
+        }
+    ],
+    \"dependencies\": [
+        {
+            \"id_db\": 0,
+            \"table\": \"tdo_tbl__groups\",
+            \"field\": \"fld_category_groups\"
+        }
+    ],
+    \"id\": \"7\"
+}";"{\"fr\":{\"0\":\"69\",\"1\":\"68\",\"2\":\"70\",\"3\":\"71\"},\"en\":{\"0\":\"69\",\"1\":\"68\",\"2\":\"70\",\"3\":\"71\"}}";"0";"2019-04-06 10:54:49";"2019-04-06 10:54:49";"0"

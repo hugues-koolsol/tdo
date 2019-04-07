@@ -135,7 +135,7 @@ if($err==0){
  $par=array(
   'table'           => 'tdo_tbl__groups' ,
   'file'            => 'sql_data___tbl__groups.txt' ,
-  'listeDesChamps'  => '`fld_id_groups` , `fld_name_groups` , `fld_parent_id_groups` , `fld_isactive_groups` , `fld_tsupd_groups` , `fld_tscrt_groups` , `fld_cntupd_groups`' ,
+  'listeDesChamps'  => '`fld_id_groups` , `fld_name_groups` , `fld_parent_id_groups` , `fld_root_group_id_groups` , `fld_isactive_groups` , `fld_category_groups` , `fld_crtLocAdm_groups` , `fld_tsupd_groups` , `fld_tscrt_groups` , `fld_cntupd_groups`' ,
   'tabChamps'       => array (
   0 => 
   array (
@@ -166,6 +166,15 @@ if($err==0){
   ),
   3 => 
   array (
+    0 => 'fld_root_group_id_groups',
+    1 => 'bigint(20)',
+    2 => 'NO',
+    3 => '',
+    4 => '1',
+    5 => '',
+  ),
+  4 => 
+  array (
     0 => 'fld_isactive_groups',
     1 => 'tinyint(4)',
     2 => 'NO',
@@ -173,7 +182,25 @@ if($err==0){
     4 => '1',
     5 => '',
   ),
-  4 => 
+  5 => 
+  array (
+    0 => 'fld_category_groups',
+    1 => 'varchar(32)',
+    2 => 'NO',
+    3 => '',
+    4 => 'anonymous',
+    5 => '',
+  ),
+  6 => 
+  array (
+    0 => 'fld_crtLocAdm_groups',
+    1 => 'int(11)',
+    2 => 'NO',
+    3 => '',
+    4 => '0',
+    5 => '',
+  ),
+  7 => 
   array (
     0 => 'fld_tsupd_groups',
     1 => 'datetime',
@@ -182,7 +209,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  5 => 
+  8 => 
   array (
     0 => 'fld_tscrt_groups',
     1 => 'datetime',
@@ -191,7 +218,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  6 => 
+  9 => 
   array (
     0 => 'fld_cntupd_groups',
     1 => 'bigint(20)',
@@ -438,7 +465,7 @@ if($err==0){
  $par=array(
   'table'           => 'tdo_tbl__pages' ,
   'file'            => 'sql_data___tbl__pages.txt' ,
-  'listeDesChamps'  => '`fld_id_pages` , `fld_name_pages` , `fld_menu_pages` , `fld_isajax_pages` , `fld_isremote_pages` , `fld_isuser_pages` , `fld_localadmin_pages` , `fld_isaction_pages` , `fld_parent_pages` , `fld_tsupd_pages` , `fld_tscrt_pages` , `fld_cntupd_pages`' ,
+  'listeDesChamps'  => '`fld_id_pages` , `fld_name_pages` , `fld_menu_pages` , `fld_isajax_pages` , `fld_isremote_pages` , `fld_isuser_pages` , `fld_localadmin_pages` , `fld_isaction_pages` , `fld_parent_pages` , `fld_order_all_pages` , `fld_tsupd_pages` , `fld_tscrt_pages` , `fld_cntupd_pages`' ,
   'tabChamps'       => array (
   0 => 
   array (
@@ -523,6 +550,15 @@ if($err==0){
   ),
   9 => 
   array (
+    0 => 'fld_order_all_pages',
+    1 => 'int(11)',
+    2 => 'NO',
+    3 => '',
+    4 => '0',
+    5 => '',
+  ),
+  10 => 
+  array (
     0 => 'fld_tsupd_pages',
     1 => 'datetime',
     2 => 'NO',
@@ -530,7 +566,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  10 => 
+  11 => 
   array (
     0 => 'fld_tscrt_pages',
     1 => 'datetime',
@@ -539,7 +575,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  11 => 
+  12 => 
   array (
     0 => 'fld_cntupd_pages',
     1 => 'bigint(20)',

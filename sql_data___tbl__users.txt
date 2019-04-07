@@ -1,2 +1,3 @@
 "1";"root";"someone@somewhere.com";"0";"$2y$12$3bp41fGogqgkX9vwEvC8lOHeNFU9guqEjWkYdgOEoYyJl2N.26PZq";"1";"1";"1";"Someone";"Somewhere";"2019-01-26 17:14:03";"1000-01-01 00:00:00";"27"
 "2";"_anonymous";"_anonymous";"0";"";"2";"1";"0";"";"";"1000-01-01 00:00:00";"1000-01-01 00:00:00";"0"
+"3";"admin";"";"0";"$2y$12$EHR8kc2e9fjeuGlSvku3duitnJeUwWBZi2UHrw3BFgqToKrqEHnIe";"3";"0";"1";"general";"admin";"2019-04-07 09:17:56";"2019-04-06 14:05:55";"5"
