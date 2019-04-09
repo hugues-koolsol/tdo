@@ -1,4 +1,4 @@
-"88";"92";"1";"table creation example, exemple de création de table";"-- use utf8mb4_unicode_ci for text, varchar, ... ( https://www.google.com/search?q=mysql+utf8mb4+vs+utf8 )
+"88";"94";"1";"table creation example, exemple de création de table";"-- use utf8mb4_unicode_ci for text, varchar, ... ( https://www.google.com/search?q=mysql+utf8mb4+vs+utf8 )
 -- replace tdo by your key (xxx) in the table name
 -- replace _zzstests by the short name of the table
 -- replace _zzlongtests by the final part of the name of the table
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `tdo_tbl_zzlongtests` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
 
 ";"2019-03-12 15:20:52";"2017-11-16 21:09:21";"30"
-"117";"91";"1";"regex notepad++ to transform the txt2() function call to txt1() ";"txt2\\(('.[^.]*)\\_([0-9]{1,5})\\_([0-9]{1,5})'\\)
+"117";"93";"1";"regex notepad++ to transform the txt2() function call to txt1() ";"txt2\\(('.[^.]*)\\_([0-9]{1,5})\\_([0-9]{1,5})'\\)
 txt1\\($1'\\)
 
 Note: sometimes, you want to reset all translation of a source file.
@@ -62,7 +62,7 @@ txt2('bla bla_1234_5678')
 and set them to 
 txt1('bla bla')
 ";"2019-01-26 14:41:13";"2017-12-07 20:54:16";"2"
-"123";"90";"1";"Strange utf8 values";"×✕╳▣▦◉◎◯⬤●✳✴
+"123";"92";"1";"Strange utf8 values";"×✕╳▣▦◉◎◯⬤●✳✴
 ⇒
 http://www.fileformat.info/info/unicode/block/index.htm
 
@@ -89,7 +89,7 @@ So the function addslashes1 fix the problem ( partially for some characters ) to
 
 This function is not used for this table on the comment field on purpose !
 ";"2019-01-27 12:59:48";"2018-02-07 12:12:01";"33"
-"150";"93";"1";"example of a view";"{\"view_key_for\":[\"xxx_address_list\"]} on key_autoincrement_field
+"150";"95";"1";"example of a view";"{\"view_key_for\":[\"xxx_address_list\"]} on key_autoincrement_field
 
 CREATE VIEW xxx_address_list
 AS
@@ -98,7 +98,7 @@ SELECT `a`.`address_id` AS `ID`    , concat( `a`.`address` , ' ' , `a`.`address2
 FROM   `address` AS a 
        JOIN `city`    ON `a`.`city_id`       = `city`.`city_id`
        JOIN `country` ON `city`.`country_id` = `country`.`country_id`;";"2019-03-17 15:02:19";"2019-03-07 19:31:18";"3"
-"156";"94";"1";"examples of comments to add in database";"{\"param\":\"yorno\",\"unsetPossible\":true} // yes or no or undefined
+"156";"96";"1";"examples of comments to add in database";"{\"param\":\"yorno\",\"unsetPossible\":true} // yes or no or undefined
 {\"param\":\"yorno\"}                      // yes or no but not undefined
 {\"param\":\"name_of_the_parameter\"} 
 {\"param\":\"country\",\"set\":true}         // the field is a mysql set type in the database
@@ -132,7 +132,7 @@ field comment : {\"timeOption\":\"1\"} to set up time option
 //           => 5 = hide seconds and quick links on time and minutes
 //           => 6 = every 5 minuts and quick links on time and minutes
 //           => 7 = hide seconds and every 5 minuts and quick links on time and minutes";"2019-03-20 20:12:13";"2019-03-09 15:01:52";"8"
-"172";"95";"1";"constraint example , exemple de contrainte mysql";"ALTER TABLE `child_table` ADD CONSTRAINT `constraint_name` FOREIGN KEY (`field_name_in_child_table`) REFERENCES `parent_table`(`key_field_in_parent_table`);
+"172";"97";"1";"constraint example , exemple de contrainte mysql";"ALTER TABLE `child_table` ADD CONSTRAINT `constraint_name` FOREIGN KEY (`field_name_in_child_table`) REFERENCES `parent_table`(`key_field_in_parent_table`);
 
 ALTER TABLE `child_table` DROP FOREIGN KEY `constraint_name`; 
 ";"2019-03-15 10:15:23";"2019-03-15 10:15:23";"0"
@@ -528,3 +528,12 @@ INSERT INTO `wrd_countrylanguage` (`CountryCode`, `Language`, `IsOfficial`, `Per
 -- ALTER TABLE `wrd_city` ADD CONSTRAINT `wrd_city_ibfk_1` FOREIGN KEY (`CountryCode`) REFERENCES `wrd_country` (`Code`);
 -- ALTER TABLE `wrd_countrylanguage` ADD CONSTRAINT `countryLanguage_ibfk_1` FOREIGN KEY (`CountryCode`) REFERENCES `wrd_country` (`Code`);
 ";"2019-03-23 20:23:54";"2019-03-23 16:34:48";"3"
+"240";"90";"1";"in this todo list, dans cette liste des todos";"Utilisez les priorités 00=>79 pour les tâches courantes,
+Utilisez les priorités 80=>89 pour les idées
+Utilisez les priorités 90=>98 pour les choses à conserver ( elles sont en gras )
+Utilisez la priorité 99 pour les tâches terminées
+
+Use priorities 00 => 79 for common tasks,
+Use priorities 80 => 89 for ideas
+Use priorities 90 => 98 for things to keep ( they are in bold )
+Use priority 99 for completed tasks";"2019-04-09 18:32:22";"2019-04-08 22:20:52";"3"
