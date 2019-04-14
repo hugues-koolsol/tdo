@@ -34,7 +34,7 @@ if(isset($_POST['action']) && $_POST['action']=='step1'){
    header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' the application key must contain 3 characters in the range a-z'));
    exit();
   }
-  if($_POST['appkey']=='tdo' || $_POST['appkey']=='old' || $_POST['appkey']=='inc' || $_POST['appkey']=='css' || $_POST['appkey']=='img' ){
+  if($_POST['appkey']=='tdo' ){
    $err=1;
    header("HTTP/1.1 303 See Other");header('Location: '.BNF.'?errormessage='.urlencode(__LINE__ . ' this application key is reserved'));
    exit();   
@@ -181,12 +181,21 @@ if(isset($_POST['action']) && $_POST['action']=='step3'){
      }
      // replace db connexion parameters
      $newParam='<'.'?php'."\r\n"; // ,,
-     $newParam.='$GLOBALS[\'glob_db\'][0][\'server\']   =\''.$_SESSION[PGMK]['server']   .'\';'."\r\n"; 
-     $newParam.='$GLOBALS[\'glob_db\'][0][\'user\']     =\''.$_SESSION[PGMK]['user']     .'\';'."\r\n";
-     $newParam.='$GLOBALS[\'glob_db\'][0][\'password\'] =\''.$_SESSION[PGMK]['password'] .'\';'."\r\n";
-     $newParam.='$GLOBALS[\'glob_db\'][0][\'dbname\']   =\''.$dbName .'\';'."\r\n";
-     $newParam.='$GLOBALS[\'glob_db\'][0][\'setname\']  =\'utf8mb4\';'."\r\n";
-     $newParam.='$GLOBALS[\'glob_db\'][0][\'link\']     =null;'."\r\n\r\n\r\n";
+     $newParam.='if($GLOBALS[\'glob_isLocalHost\']){'."\r\n";
+     $newParam.=' $GLOBALS[\'glob_db\'][0][\'server\']   =\''.$_SESSION[PGMK]['server']   .'\';'."\r\n"; 
+     $newParam.=' $GLOBALS[\'glob_db\'][0][\'user\']     =\''.$_SESSION[PGMK]['user']     .'\';'."\r\n";
+     $newParam.=' $GLOBALS[\'glob_db\'][0][\'password\'] =\''.$_SESSION[PGMK]['password'] .'\';'."\r\n";
+     $newParam.=' $GLOBALS[\'glob_db\'][0][\'dbname\']   =\''.$dbName .'\';'."\r\n";
+     $newParam.=' $GLOBALS[\'glob_db\'][0][\'setname\']  =\'utf8mb4\';'."\r\n";
+     $newParam.=' $GLOBALS[\'glob_db\'][0][\'link\']     =null;'."\r\n";
+     $newParam.='}else{'."\r\n";
+     $newParam.=' $GLOBALS[\'glob_db\'][0][\'server\']   =\'mmmmmmmmmccc1.sql-pro.oooooo.nnn\';'."\r\n"; 
+     $newParam.=' $GLOBALS[\'glob_db\'][0][\'user\']     =\'mmmmmmmmmccc1\';'."\r\n";
+     $newParam.=' $GLOBALS[\'glob_db\'][0][\'password\'] =\'zzzzzzzzzzzzz\';'."\r\n";
+     $newParam.=' $GLOBALS[\'glob_db\'][0][\'dbname\']   =\'mmmmmmmmmccc1\';'."\r\n";
+     $newParam.=' $GLOBALS[\'glob_db\'][0][\'setname\']  =\'utf8mb4\';'."\r\n";
+     $newParam.=' $GLOBALS[\'glob_db\'][0][\'link\']     =null;'."\r\n";
+     $newParam.='}'."\r\n";
      $newParam.='/*'."\r\n";
      $newParam.='$GLOBALS[\'glob_db\'][1][\'server\']   =\'other_or_same_server\';'."\r\n"; 
      $newParam.='$GLOBALS[\'glob_db\'][1][\'user\']     =\'other_or_same_user\';'."\r\n";
@@ -238,14 +247,6 @@ if(isset($_POST['action']) && $_POST['action']=='step6'){
   $arrFileInc=file($_SESSION[PGMK]['appkey'].'_www/'.$v0);
   foreach($arrFileInc as $k1 => $v1){
    
-   if(substr($v1,0,39)=='$GLOBALS[\'glob_incPathAreInSubFolders\']'){
-    if(isset($_POST['incPathUnderRoot']) && $_POST['incPathUnderRoot']=='on'){
-     $arrFileInc[$k1]='$GLOBALS[\'glob_incPathAreInSubFolders\']=true;'.CRLF;
-    }else{
-     $arrFileInc[$k1]='$GLOBALS[\'glob_incPathAreInSubFolders\']=false;'.CRLF;      
-    }
-   }
-   
    if(substr($v1,0,35)=='define(\'SECRET_KEY_FOR_MAINTENANCE\''){
     $arrFileInc[$k1]='define(\'SECRET_KEY_FOR_MAINTENANCE\','.var_export($secretKeyForMaintenance,true).');'.CRLF;
    }
@@ -258,12 +259,6 @@ if(isset($_POST['action']) && $_POST['action']=='step6'){
    }
    fclose($fdincphp); 
   }
- }
- if(isset($_POST['incPathUnderRoot']) && $_POST['incPathUnderRoot']=='on'){
-  rename($_SESSION[PGMK]['appkey'].'__no_version_control' , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'__no_version_control'  );
-  rename($_SESSION[PGMK]['appkey'].'_cron'                , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_cron'                 );
-  rename($_SESSION[PGMK]['appkey'].'_data'                , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_data'                 );
-  rename($_SESSION[PGMK]['appkey'].'_inc'                 , $_SESSION[PGMK]['appkey'].'_www/'.$_SESSION[PGMK]['appkey'].'_inc'                  );
  }
  
  $newAppKey=$_SESSION[PGMK]['appkey'];
@@ -354,7 +349,7 @@ if(!isset($_SESSION[PGMK]['step']) || $_SESSION[PGMK]['step']==1){
   $val=isset($_SESSION[PGMK]['appkey'])?$_SESSION[PGMK]['appkey']:'aaa';
   $o1.='<input type="text" value="'.$val.'" name="appkey" size="3" maxlength="3"/>';
   $o1.='<br />';
-  $o1.='reserved application keys are : "tdo" "old" "inc" "css" "img"';
+  $o1.='reserve application keys is : "tdo" so do not use it !';
   $o1.='<br />';
   $o1.='<p>';
   $o1.='Enter a name of the database to use or live it void';
@@ -469,21 +464,7 @@ if(isset($_SESSION[PGMK]['step']) && $_SESSION[PGMK]['step']==6){
  $o1.='<form method="post">';
  $o1.='<p>';
  $o1.='<h2>Step 6</h2>';
- $o1.='</p>';
- 
- 
- $o1.='<p>';
- 
- $o1.='<label for="incPathUnderRoot" style="display:none;">';
- $o1.='Check this if the include and data directories will be under the www directory instead of the root directory ( not recommended for git or svn )';
- $o1.='<br /><br />';
- $o1.='<input type="checkbox" id="incPathUnderRoot" name="incPathUnderRoot" style="transform:scale(2);display:none;">';
- $o1.='</label>';
- 
- $o1.='</p>';
- 
- $o1.='<p>';
- $o1.='<button type="submit" name="action" value="step6">Special setup</button>';
+ $o1.='<button type="submit" name="action" value="step6">Final setup</button>';
  $o1.='</p>';
  $o1.='</form>';
  $o1.=razSessionForm();

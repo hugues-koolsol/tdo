@@ -611,7 +611,7 @@ if($err==0){
  $par=array(
   'table'           => 'tdo_tbl__paramnames' ,
   'file'            => 'sql_data___tbl__paramnames.txt' ,
-  'listeDesChamps'  => '`fld_id_parnams` , `fld_key_parnams` , `fld_label_parnams` , `fld_comment_parnams` , `fld_json_parnams` , `fld_order_parnams` , `fld_isuser_parnams` , `fld_tscrt_parnams` , `fld_tsupd_parnams` , `fld_cntupd_parnams`' ,
+  'listeDesChamps'  => '`fld_id_parnams` , `fld_key_parnams` , `fld_label_parnams` , `fld_comment_parnams` , `fld_json_parnams` , `fld_order_parnams` , `fld_isuser_parnams` , `fld_ininclude_parnams` , `fld_tscrt_parnams` , `fld_tsupd_parnams` , `fld_cntupd_parnams`' ,
   'tabChamps'       => array (
   0 => 
   array (
@@ -678,6 +678,15 @@ if($err==0){
   ),
   7 => 
   array (
+    0 => 'fld_ininclude_parnams',
+    1 => 'tinyint(4)',
+    2 => 'NO',
+    3 => '',
+    4 => '0',
+    5 => '',
+  ),
+  8 => 
+  array (
     0 => 'fld_tscrt_parnams',
     1 => 'datetime',
     2 => 'NO',
@@ -685,7 +694,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  8 => 
+  9 => 
   array (
     0 => 'fld_tsupd_parnams',
     1 => 'datetime',
@@ -694,7 +703,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  9 => 
+  10 => 
   array (
     0 => 'fld_cntupd_parnams',
     1 => 'bigint(20)',
