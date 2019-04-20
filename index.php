@@ -282,8 +282,8 @@ if(isset($_POST['action']) && $_POST['action']=='step6'){
   if(mysqli_errno($dbLink)==0){
    unlink('index.php');
    $newParam='<'.'?php'."\r\n"; // ,,
-   $newParam.='header(\'Status: 301 Moved Permanently\',false,301);'."\r\n";
-   $newParam.='header(\'Location: '.$newAppKey.'_www\');'."\r\n";
+   $newParam.='// header(\'Status: 301 Moved Permanently\',false,301); // todo, uncomment this for production'."\r\n";
+   $newParam.='header(\'Location: '.$newAppKey.'_www/\');'."\r\n";
    $newParam.='exit(0);';
    if($fdparam=fopen('index.php','w')){
     fwrite($fdparam,$newParam);
