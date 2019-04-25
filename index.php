@@ -366,13 +366,13 @@ if(!isset($_SESSION[PGMK]['step']) || $_SESSION[PGMK]['step']==1){
   $o1.='<p>';
   $o1.='the user for your local MySql database';
   $o1.='<br />';
-  $o1.='<input type="text" value="admin" name="user" size="32" />';
+  $o1.='<input type="text" value="root" name="user" id="user" size="32" /> <a href="#" onclick="document.getElementById(\'user\').value=\'admin\';return false;">admin</a>';
   $o1.='</p>';
 
   $o1.='<p>';
   $o1.='the password for your local database';
   $o1.='<br />';
-  $o1.='<input type="text" value="admin" name="password" size="32" />';
+  $o1.='<input type="text" value="root" name="password" id="password" size="32" /> <a href="#" onclick="document.getElementById(\'password\').value=\'admin\';return false;">admin</a>';
   $o1.='</p>';
 
   $o1.='<p>';

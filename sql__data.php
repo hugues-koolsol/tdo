@@ -25,7 +25,7 @@ if($err==0){
  $par=array(
   'table'           => 'tdo_tbl__css' ,
   'file'            => 'sql_data___tbl__css.txt' ,
-  'listeDesChamps'  => '`fld_id_css` , `fld_name_css` , `fld_active_css` , `fld_color_back_css` , `fld_color_text_css` , `fld_json_css` , `fld_tsupd_css` , `fld_tscrt_css` , `fld_cntupd_css`' ,
+  'listeDesChamps'  => '`fld_id_css` , `fld_name_css` , `fld_active_css` , `fld_json_css` , `fld_tsupd_css` , `fld_tscrt_css` , `fld_cntupd_css`' ,
   'tabChamps'       => array (
   0 => 
   array (
@@ -56,24 +56,6 @@ if($err==0){
   ),
   3 => 
   array (
-    0 => 'fld_color_back_css',
-    1 => 'varchar(256)',
-    2 => 'YES',
-    3 => '',
-    4 => NULL,
-    5 => '',
-  ),
-  4 => 
-  array (
-    0 => 'fld_color_text_css',
-    1 => 'varchar(256)',
-    2 => 'YES',
-    3 => '',
-    4 => NULL,
-    5 => '',
-  ),
-  5 => 
-  array (
     0 => 'fld_json_css',
     1 => 'text',
     2 => 'NO',
@@ -81,7 +63,7 @@ if($err==0){
     4 => NULL,
     5 => '',
   ),
-  6 => 
+  4 => 
   array (
     0 => 'fld_tsupd_css',
     1 => 'datetime',
@@ -90,7 +72,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  7 => 
+  5 => 
   array (
     0 => 'fld_tscrt_css',
     1 => 'datetime',
@@ -99,7 +81,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  8 => 
+  6 => 
   array (
     0 => 'fld_cntupd_css',
     1 => 'bigint(20) unsigned',

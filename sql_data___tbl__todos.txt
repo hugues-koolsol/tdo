@@ -62,8 +62,15 @@ txt2('bla bla_1234_5678')
 and set them to 
 txt1('bla bla')
 ";"2019-01-26 14:41:13";"2017-12-07 20:54:16";"2"
-"123";"92";"1";"Strange utf8 values";"×✕╳▣▦◉◎◯⬤●✳✴
-⇒
+"123";"92";"1";"Useful and strange utf8 values";"⇐⇒⇑⇓⇔⇕⇰⇳⇦⇨⇧⇩⇠ ⇡ ⇢ ⇣ ⇤ ⇥ ⇦ ⇧ ⇨ ⇩ ⇪ ⇫ ⇬ ⇭ ⇮ ⇯ ⇰ ⇱ ⇲ ⇳ ⇴ ⇵ ⭐⭮⭯↺↻⟲⟳ ↚ ↛ 🌎
+×✕╳▣▦◉◎◯⬤●✳✴ ✍ ⭐
+⌦ ⌧ ⌨ ⟨ ⟩ ⌫
+🦇 💩 🤪 😀 😂 🤣 😉 😎 🤔 😐 🙄 🤑 😨 😱 😈 👽✋ 👍 👎 ✊ 💣 💥 🍿 🍩  🌐 🛑 ✈ 🔥 ✨ 🎉 🏆 ☎ 💾 🎥 💡 💰 ✉ 🔧
+🗺  ⏩ ⏪ ⏫ ⏬ ⏭ ⏮ ⏯ ⏰⌚ ⏱ ⏲ ⏳ ⏴ ⏵ ⏶ ⏷ ⏸ ⏹ ⏺ 
+☀ ☁ ☂
+➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈ ➉ ➊ ➋ ➌ ➍ ➎ ➏ ➐ ➑ ➒ ➓ 
+http://csbruce.com/software/utf-8.html
+https://www.utf8icons.com/
 http://www.fileformat.info/info/unicode/block/index.htm
 
 &é~'{}'()[]-|è`_\\ç^ à@°+=¨µ*%ù§!/:.;?,<>¤£²
@@ -75,29 +82,36 @@ utf8mb4 exists since MySQL 5.5.3 (released in early 2010) and you should use onl
 Problem with utf8 : 
 1°) copy and paste all the text line under into notepad++ and you will see that the two \"a\" with accents are not visually the same, it is the same for other characters
 
-à=>à,â=>â,ã=>ã,á=>á,é=>é,è=>è,ê=>ê,É=>É,ï=>ï,î=>î,ñ=>ñ,Ñ=>Ñ,ó=>ó,ô=>ô,ö=>ö,ü=>ü,Ü=>Ü,
+à=>à,â=>â,ã=>ã,á=>á,é=>é,è=>è,ê=>ê,É=>É,ï=>ï,î=>î,ñ=>ñ,Ñ=>Ñ,ó=>ó,ô=>ô,ö=>ö,ü=>ü,Ü=>Ü,
 
-2°) there is a different encoding for the two \"a\" with accent \"`\" (à=>à)
+2°) there is a different encoding for the two \"a\" with accent \"`\" (à=>à)
 one is a%CC%%80 ( kind of a + \"backspace\" + accent ) and the other one is %C3%A0 ( utf8 for à )
 
 They are visually the same on google chrome and both are valid utf-8 encoding.
 
 3°) only the second \"à\" is valid for searches . for example if you look for
-déjà with the first \"é\" , il will not be founded.
+déjà with the first \"é\" , il will not be founded.
 
 So the function addslashes1 fix the problem ( partially for some characters ) to put the right utf8 encoding
 
 This function is not used for this table on the comment field on purpose !
-";"2019-01-27 12:59:48";"2018-02-07 12:12:01";"33"
-"150";"95";"1";"example of a view";"{\"view_key_for\":[\"xxx_address_list\"]} on key_autoincrement_field
+";"2019-04-25 13:17:38";"2018-02-07 12:12:01";"43"
+"150";"95";"1";"example of a view";"{\"view_key_for\":[\"view_address_list\"]} on key_autoincrement_field
 
-CREATE VIEW xxx_address_list
-AS
-SELECT `a`.`address_id` AS `ID`    , concat( `a`.`address` , ' ' , `a`.`address2` ) as `address` , `a`.`postal_code` AS `zip code` , 
-       `city`.`city`    AS `city`  , `country`.`country`                            AS `country` , `a`.`phone`       AS `phone`	           
-FROM   `address` AS a 
-       JOIN `city`    ON `a`.`city_id`       = `city`.`city_id`
-       JOIN `country` ON `city`.`country_id` = `country`.`country_id`;";"2019-03-17 15:02:19";"2019-03-07 19:31:18";"3"
+CREATE VIEW view_address_list AS
+SELECT 
+ `a`.`address_id` AS `ID`                          ,
+ concat( IF( ISNULL(`a`.`address`),'',`a`.`address`) , ' ' , IF(ISNULL(`a`.`address2`),'',`a`.`address2`)) AS `address`,
+ `a`.`postal_code`     AS `zip_code`   ,
+ `city`.`city`              AS `city`          ,
+ `country`.`country`  AS `country`     ,
+ `a`.`phone`             AS `phone` 
+FROM   `address` `a` 
+  JOIN  `city` on `a`.`city_id` = `sakila`.`city`.`city_id` 
+  JOIN  `country` on `sakila`.`city`.`country_id` = `sakila`.`country`.`country_id`
+
+
+";"2019-04-25 11:06:50";"2019-03-07 19:31:18";"5"
 "156";"96";"1";"examples of comments to add in database";"{\"param\":\"yorno\",\"unsetPossible\":true} // yes or no or undefined
 {\"param\":\"yorno\"}                      // yes or no but not undefined
 {\"param\":\"name_of_the_parameter\"} 
@@ -150,13 +164,13 @@ Use priorities 90 => 98 for things to keep ( they are in bold )
 Use priority 99 for completed tasks";"2019-04-09 18:32:22";"2019-04-08 22:20:52";"3"
 "251";"98";"1";"exemple de base world réduite";"-- example of a small world database (see mysql web site ) 
 -- It is the original base but I took of many countries ! 
--- DELETE FROM `wrd_country` WHERE `Code` NOT IN ('FRA','USA');
--- DELETE FROM `wrd_city` WHERE `CountryCode` NOT IN ('FRA','USA');
--- DELETE FROM `wrd_countrylanguage` WHERE `CountryCode` NOT IN ('FRA','USA');
+-- DELETE FROM `country`              WHERE `Code` NOT IN ('FRA','USA');
+-- DELETE FROM `city`                    WHERE `CountryCode` NOT IN ('FRA','USA');
+-- DELETE FROM `countrylanguage` WHERE `CountryCode` NOT IN ('FRA','USA');
 
 
-DROP TABLE IF EXISTS `wrd_city`;
-CREATE TABLE IF NOT EXISTS `wrd_city` (
+DROP TABLE IF EXISTS `city`;
+CREATE TABLE IF NOT EXISTS `city` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` char(35) NOT NULL DEFAULT '' ,
   `CountryCode` char(3) NOT NULL DEFAULT '',
@@ -167,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `wrd_city` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO `wrd_city` (`ID`, `Name`, `CountryCode`, `District`, `Population`) VALUES
+INSERT INTO `city` (`ID`, `Name`, `CountryCode`, `District`, `Population`) VALUES
 (2974, 'Paris', 'FRA', 'Île-de-France', 2125246),
 (2975, 'Marseille', 'FRA', 'Provence-Alpes-Côte', 798430),
 (2976, 'Lyon', 'FRA', 'Rhône-Alpes', 445452),
@@ -484,8 +498,8 @@ INSERT INTO `wrd_city` (`ID`, `Name`, `CountryCode`, `District`, `Population`) V
 (4066, 'Charleston', 'USA', 'South Carolina', 89063);
 
 
-DROP TABLE IF EXISTS `wrd_country`;
-CREATE TABLE IF NOT EXISTS `wrd_country` (
+DROP TABLE IF EXISTS `country`;
+CREATE TABLE IF NOT EXISTS `country` (
   `Code` char(3) NOT NULL DEFAULT '',
   `Name` char(52) NOT NULL DEFAULT '',
   `Continent` enum('Asia','Europe','North America','Africa','Oceania','Antarctica','South America','toto''tata') NOT NULL DEFAULT 'Asia',
@@ -505,13 +519,13 @@ CREATE TABLE IF NOT EXISTS `wrd_country` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO `wrd_country` (`Code`, `Name`, `Continent`, `Region`, `SurfaceArea`, `IndepYear`, `Population`, `LifeExpectancy`, `GNP`, `GNPOld`, `LocalName`, `GovernmentForm`, `HeadOfState`, `Capital`, `Code2`) VALUES
+INSERT INTO `country` (`Code`, `Name`, `Continent`, `Region`, `SurfaceArea`, `IndepYear`, `Population`, `LifeExpectancy`, `GNP`, `GNPOld`, `LocalName`, `GovernmentForm`, `HeadOfState`, `Capital`, `Code2`) VALUES
 ('FRA', 'France', 'Europe', 'Western Europe', 551500.00, 843, 59225700, 78.8, 1424285.00, 1392448.00, 'France', 'Republic', 'Jacques Chirac', 2974, 'FR'),
 ('USA', 'United States', 'North America', 'North America', 9363520.00, 1776, 278357000, 77.1, 8510700.00, 8110900.00, 'United States', 'Federal Republic', 'George W. Bush', 3813, 'US');
 
 
-DROP TABLE IF EXISTS `wrd_countrylanguage`;
-CREATE TABLE IF NOT EXISTS `wrd_countrylanguage` (
+DROP TABLE IF EXISTS `countrylanguage`;
+CREATE TABLE IF NOT EXISTS `countrylanguage` (
   `CountryCode` char(3) NOT NULL DEFAULT '',
   `Language` char(30) NOT NULL DEFAULT '',
   `IsOfficial` enum('T','F') NOT NULL DEFAULT 'F',
@@ -521,7 +535,7 @@ CREATE TABLE IF NOT EXISTS `wrd_countrylanguage` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO `wrd_countrylanguage` (`CountryCode`, `Language`, `IsOfficial`, `Percentage`) VALUES
+INSERT INTO `countrylanguage` (`CountryCode`, `Language`, `IsOfficial`, `Percentage`) VALUES
 ('FRA', 'Basque', 'F', 0.5),
 ('FRA', 'Français', 'T', 93.6),
 ('FRA', 'Italian', 'F', 0.4),
@@ -542,6 +556,6 @@ INSERT INTO `wrd_countrylanguage` (`CountryCode`, `Language`, `IsOfficial`, `Per
 ('USA', 'Vietnamese', 'F', 0.2);
 
 
--- ALTER TABLE `wrd_city` ADD CONSTRAINT `wrd_city_ibfk_1` FOREIGN KEY (`CountryCode`) REFERENCES `wrd_country` (`Code`);
--- ALTER TABLE `wrd_countrylanguage` ADD CONSTRAINT `countryLanguage_ibfk_1` FOREIGN KEY (`CountryCode`) REFERENCES `wrd_country` (`Code`);
-";"2019-04-19 11:53:36";"2019-04-12 20:19:22";"2"
+-- ALTER TABLE `city` ADD CONSTRAINT `city_ibfk_1` FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`);
+-- ALTER TABLE `countrylanguage` ADD CONSTRAINT `countryLanguage_ibfk_1` FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`);
+";"2019-04-25 14:49:34";"2019-04-12 20:19:22";"3"
