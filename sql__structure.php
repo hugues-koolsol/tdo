@@ -64,7 +64,7 @@ if($err==0){
    PRIMARY KEY (`fld_id_grpspgs`),
    UNIQUE KEY `k_grppag` (`fld_group_id_grpspgs`,`fld_page_id_grpspgs`),
    KEY `fk_page_of_grppgs` (`fld_page_id_grpspgs`)
- ) ENGINE=InnoDB AUTO_INCREMENT=277 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=278 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__grpspgs'.mysqli_error($dbLink) ) );
@@ -85,7 +85,7 @@ if($err==0){
    `fld_cntupd_lngVals` int(11) NOT NULL DEFAULT \'0\' COMMENT \'{"cntupd":true}\',
    PRIMARY KEY (`fld_id_lngVals`),
    UNIQUE KEY `k_page_key_lang` (`fld_key_lngVals`,`fld_lang_lngVals`,`fld_page_id_lngVals`,`fld_type_lngVals`) USING BTREE
- ) ENGINE=InnoDB AUTO_INCREMENT=3075 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=3099 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__langvalues'.mysqli_error($dbLink) ) );
@@ -130,7 +130,7 @@ if($err==0){
    `fld_cntupd_pages` bigint(20) NOT NULL DEFAULT \'0\' COMMENT \'{"cntupd":true}\',
    PRIMARY KEY (`fld_id_pages`),
    UNIQUE KEY `k_pages1` (`fld_name_pages`)
- ) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__pages'.mysqli_error($dbLink) ) );
@@ -251,7 +251,7 @@ if($err==0){
    `fld_cntupd_todos` int(11) NOT NULL DEFAULT \'0\' COMMENT \'{"cntupd":true}\',
    PRIMARY KEY (`fld_id_todos`),
    KEY `k_user` (`fld_id_user_todos`)
- ) ENGINE=InnoDB AUTO_INCREMENT=288 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=295 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__todos'.mysqli_error($dbLink) ) );
@@ -275,7 +275,7 @@ if($err==0){
    `fld_tscrt_uploadedDocs` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\' COMMENT \'{"tscrt":true}\',
    `fld_cntupd_uploadedDocs` bigint(20) unsigned NOT NULL DEFAULT \'0\' COMMENT \'{"cntupd":true}\',
    PRIMARY KEY (`fld_id_uploadedDocs`)
- ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__uploadeddocs'.mysqli_error($dbLink) ) );
