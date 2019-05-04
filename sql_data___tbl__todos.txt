@@ -95,7 +95,7 @@ déjà with the first \"é\" , il will not be founded.
 So the function addslashes1 fix the problem ( partially for some characters ) to put the right utf8 encoding
 
 This function is not used for this table on the comment field on purpose !
-";"2019-04-25 13:17:38";"2018-02-07 12:12:01";"43"
+";"2019-05-04 16:33:15";"2018-02-07 12:12:01";"44"
 "150";"95";"1";"example of a view";"{\"view_key_for\":[\"view_address_list\"]} on key_autoincrement_field
 
 CREATE VIEW view_address_list AS

@@ -12,4 +12,4 @@
 "14";"10";"fld_id_tables";"fld_name_tables";"10";"fld_id_reftbl_of_view_tables";"0";"2019-03-12 17:59:12";"2019-03-12 17:59:12";"0"
 "15";"1";"fld_id_groups";"fld_name_groups,fld_isactive_groups";"2";"fld_group_id_grpspgs";"1";"2019-03-23 19:51:54";"2019-03-16 20:24:49";"9"
 "16";"11";"fld_id_users";"fld_firstname_users,fld_lastname_users";"17";"fld_userId_uploadedDocs";"1";"2019-03-30 12:20:41";"2019-03-30 12:20:41";"0"
-"18";"1";"fld_id_groups";"fld_name_groups";"1";"fld_root_group_id_groups";"1";"2019-04-06 17:43:21";"2019-04-06 17:43:21";"0"
+"18";"1";"fld_id_groups";"fld_name_groups";"1";"fld_root_group_id_groups";"1";"2019-05-04 15:27:17";"2019-04-06 17:43:21";"4"
