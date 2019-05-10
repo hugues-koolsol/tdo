@@ -80,23 +80,23 @@ L’essai a-t-il été concluant ? modif 1 € , un backtick => ` “Guillemets 
 utf8mb4 exists since MySQL 5.5.3 (released in early 2010) and you should use only this
 
 Problem with utf8 : 
-1°) copy and paste all the text line under into notepad++ and you will see that the two \"a\" with accents are not visually the same, it is the same for other characters
+1°) copy and paste this url in your browser : https://www.google.com/search?q=%C3%A0%20or%20a%CC%80
 
-à=>à,â=>â,ã=>ã,á=>á,é=>é,è=>è,ê=>ê,É=>É,ï=>ï,î=>î,ñ=>ñ,Ñ=>Ñ,ó=>ó,ô=>ô,ö=>ö,ü=>ü,Ü=>Ü,
+2°) copy the string in the search field ( à or à ) into notepad++ .
+      you will see that, in notepad++, the two \"a\" with accents are not visually the same, it is the same for other characters like :
+      àâãáéèêÉïîñÑóôöüÜÜ ....
 
-2°) there is a different encoding for the two \"a\" with accent \"`\" (à=>à)
+3°) there is a different encoding for the two \"a\" with accent \"`\" 
 one is a%CC%%80 ( kind of a + \"backspace\" + accent ) and the other one is %C3%A0 ( utf8 for à )
-
 They are visually the same on google chrome and both are valid utf-8 encoding.
 
-3°) only the second \"à\" is valid for searches . for example if you look for
-déjà with the first \"é\" , il will not be founded.
+4°) only the second \"à\" is valid for searches . For example, if you look for \"déjà\" with the bad \"à\" , il will not be founded.
 
 So the function addslashes1 fix the problem ( partially for some characters ) to put the right utf8 encoding
+";"2019-05-09 09:25:07";"2018-02-07 12:12:01";"49"
+"150";"95";"1";"example of a view";"This example comes from the sakila database example from mysql.
 
-This function is not used for this table on the comment field on purpose !
-";"2019-05-06 20:12:15";"2018-02-07 12:12:01";"47"
-"150";"95";"1";"example of a view";"{\"view_key_for\":[\"view_address_list\"]} on key_autoincrement_field
+{\"view_key_for\":[\"view_address_list\"]} on key_autoincrement_field
 
 CREATE VIEW view_address_list AS
 SELECT 
@@ -111,7 +111,7 @@ FROM   `address` `a`
   JOIN  `country` on `sakila`.`city`.`country_id` = `sakila`.`country`.`country_id`
 
 
-";"2019-04-25 11:06:50";"2019-03-07 19:31:18";"5"
+";"2019-05-08 11:33:02";"2019-03-07 19:31:18";"6"
 "156";"96";"1";"examples of comments to add in database";"{\"param\":\"yorno\",\"unsetPossible\":true} // yes or no or undefined
 {\"param\":\"yorno\"}                      // yes or no but not undefined
 {\"param\":\"name_of_the_parameter\"} 
@@ -152,7 +152,7 @@ field comment : {\"timeOption\":\"1\"} to set up time option
 "172";"97";"1";"constraint example , exemple de contrainte mysql";"ALTER TABLE `child_table` ADD CONSTRAINT `constraint_name` FOREIGN KEY (`field_name_in_child_table`) REFERENCES `parent_table`(`key_field_in_parent_table`);
 
 ALTER TABLE `child_table` DROP FOREIGN KEY `constraint_name`; 
-";"2019-03-15 10:15:23";"2019-03-15 10:15:23";"0"
+";"2019-05-08 11:33:20";"2019-03-15 10:15:23";"1"
 "240";"90";"1";"in this todo list, dans cette liste des todos";"Utilisez les priorités 00=>79 pour les tâches courantes,
 Utilisez les priorités 80=>89 pour les idées
 Utilisez les priorités 90=>98 pour les choses à conserver ( elles sont en gras )
@@ -161,7 +161,7 @@ Utilisez la priorité 99 pour les tâches terminées
 Use priorities 00 => 79 for common tasks,
 Use priorities 80 => 89 for ideas
 Use priorities 90 => 98 for things to keep ( they are in bold )
-Use priority 99 for completed tasks";"2019-04-09 18:32:22";"2019-04-08 22:20:52";"3"
+Use priority 99 for completed tasks";"2019-05-09 09:20:48";"2019-04-08 22:20:52";"4"
 "251";"98";"1";"exemple de base world réduite";"-- example of a small world database (see mysql web site ) 
 -- It is the original base but I took of many countries ! 
 -- DELETE FROM `country`              WHERE `Code` NOT IN ('FRA','USA');
@@ -558,4 +558,4 @@ INSERT INTO `countrylanguage` (`CountryCode`, `Language`, `IsOfficial`, `Percent
 
 -- ALTER TABLE `city` ADD CONSTRAINT `city_ibfk_1` FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`);
 -- ALTER TABLE `countrylanguage` ADD CONSTRAINT `countryLanguage_ibfk_1` FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`);
-";"2019-04-25 14:49:34";"2019-04-12 20:19:22";"3"
+";"2019-05-08 11:37:37";"2019-04-12 20:19:22";"4"
