@@ -1,4 +1,4 @@
-"1";"1";"{\"fr\":{\"language_code\":\"fr\",\"n\":\"Fran\\u00e7ais\",\"badge\":\"yybadge1\",\"rule\":\"0\"}}";"2017-09-15 16:53:45";"2019-03-18 18:17:57"
+"1";"1";"{\"fr\":{\"language_code\":\"fr\",\"n\":\"Fran\\u00e7ais\",\"badge\":\"yybadge1\",\"rule\":\"0\"}}";"2017-09-15 16:53:45";"2019-05-18 14:47:34"
 "2";"1";"{\"en\":{\"language_code\":\"en\",\"n\":\"English\",\"badge\":\"yybadge0\",\"rule\":\"0\"}}";"2017-09-15 16:57:41";"2018-11-25 12:31:04"
 "29";"2";"{\"1\":{\"code\":\"1\",\"n\":{\"fr\":\"Oui\",\"en\":\"Yes\"},\"badge\":\"yybadge1\",\"rule\":\"0\"}}";"2017-09-18 20:02:24";"2019-01-26 13:43:28"
 "33";"2";"{\"0\":{\"code\":\"0\",\"n\":{\"en\":\"No\",\"fr\":\"Non\"},\"badge\":\"yybadge0\",\"rule\":\"0\"}}";"2017-09-18 20:57:12";"2018-11-25 12:30:55"
@@ -24,3 +24,4 @@
 "68";"7";"{\"root\":{\"group_category\":\"root\",\"n\":{\"fr\":\"d\\u00e9veloppeur racine\",\"en\":\"root developer\"},\"badge\":\"yybadge0\",\"rule\":0}}";"2019-04-06 10:55:56";"2019-04-14 10:20:54"
 "69";"7";"{\"anonymous\":{\"group_category\":\"anonymous\",\"n\":{\"fr\":\"anonyme\",\"en\":\"anonymous\"},\"badge\":\"yybadge1\",\"rule\":0}}";"2019-04-06 10:56:42";"2019-04-06 10:58:07"
 "70";"7";"{\"local_admin\":{\"group_category\":\"local_admin\",\"n\":{\"fr\":\"administrateur local\",\"en\":\"local administrator\"},\"badge\":\"yybadge2\",\"rule\":0}}";"2019-04-06 10:57:56";"2019-04-06 10:57:56"
+"71";"7";"{\"i18n\":{\"group_category\":\"i18n\",\"n\":{\"fr\":\"traducteur\",\"en\":\"translator\"},\"badge\":\"yybadge3\",\"rule\":0}}";"2019-05-17 12:52:33";"2019-05-17 13:20:09"
