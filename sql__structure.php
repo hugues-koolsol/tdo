@@ -35,7 +35,7 @@ if($err==0){
    `fld_parent_id_groups` bigint(20) NOT NULL DEFAULT \'1\',
    `fld_root_group_id_groups` bigint(20) NOT NULL DEFAULT \'1\',
    `fld_isactive_groups` tinyint(4) NOT NULL DEFAULT \'1\' COMMENT \'{"param":"yorno"}\',
-   `fld_category_groups` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'anonymous\' COMMENT \'{"param":"group_category"}\',
+   `fld_role_groups` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'anonymous\' COMMENT \'{"param":"group_role"}\',
    `fld_crtLocAdm_groups` int(11) NOT NULL DEFAULT \'0\' COMMENT \'{"param":"yorno"}\',
    `fld_tsupd_groups` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\' COMMENT \'{"tsupd":true}\',
    `fld_tscrt_groups` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\' COMMENT \'{"tscrt":true}\',
@@ -85,7 +85,7 @@ if($err==0){
    `fld_cntupd_lngVals` int(11) NOT NULL DEFAULT \'0\' COMMENT \'{"cntupd":true}\',
    PRIMARY KEY (`fld_id_lngVals`),
    UNIQUE KEY `k_page_key_lang` (`fld_key_lngVals`,`fld_lang_lngVals`,`fld_page_id_lngVals`,`fld_type_lngVals`) USING BTREE
- ) ENGINE=InnoDB AUTO_INCREMENT=3240 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=3246 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__langvalues'.mysqli_error($dbLink) ) );
@@ -105,7 +105,7 @@ if($err==0){
    `fld_tag_log` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
    `fld_group_id_log` int(11) NOT NULL DEFAULT \'1\',
    PRIMARY KEY (`fld_id_log`)
- ) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__log'.mysqli_error($dbLink) ) );
@@ -126,7 +126,7 @@ if($err==0){
    `fld_isaction_pages` tinyint(4) NOT NULL DEFAULT \'0\' COMMENT \'{"param":"yorno"}\',
    `fld_parent_pages` bigint(20) unsigned DEFAULT NULL,
    `fld_order_all_pages` int(11) NOT NULL DEFAULT \'0\',
-   `fld_forbidden_categ_pages` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT \'{"param":"group_category","set":true,"unsetPossible":true}\',
+   `fld_forbidden_role_pages` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT \'{"param":"group_role","set":true,"unsetPossible":true}\',
    `fld_tsupd_pages` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\' COMMENT \'{"tsupd":true}\',
    `fld_tscrt_pages` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\' COMMENT \'{"tscrt":true}\',
    `fld_cntupd_pages` bigint(20) NOT NULL DEFAULT \'0\' COMMENT \'{"cntupd":true}\',
@@ -173,7 +173,7 @@ if($err==0){
    `fld_cntupd_parrules` bigint(20) unsigned NOT NULL DEFAULT \'0\' COMMENT \'{"cntupd":true}\',
    PRIMARY KEY (`fld_id_parrules`),
    UNIQUE KEY `k_name_id_param` (`fld_name_parrules`,`fld_id_param_parrules`)
- ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__paramrules'.mysqli_error($dbLink) ) );
@@ -189,7 +189,7 @@ if($err==0){
    `fld_tscrt_parvals` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\' COMMENT \'{"tscrt":true}\',
    `fld_tsupd_parvals` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\' COMMENT \'{"tsupd":true}\',
    PRIMARY KEY (`fld_id_parvals`)
- ) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__paramvalues'.mysqli_error($dbLink) ) );
@@ -253,7 +253,7 @@ if($err==0){
    `fld_cntupd_todos` int(11) NOT NULL DEFAULT \'0\' COMMENT \'{"cntupd":true}\',
    PRIMARY KEY (`fld_id_todos`),
    KEY `k_user` (`fld_id_user_todos`)
- ) ENGINE=InnoDB AUTO_INCREMENT=338 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=342 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__todos'.mysqli_error($dbLink) ) );
@@ -298,6 +298,8 @@ if($err==0){
    `fld_firstname_users` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'\',
    `fld_lastname_users` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'\',
    `fld_comment_users` text COLLATE utf8mb4_unicode_ci,
+   `fld_changepassword_users` tinyint(4) NOT NULL DEFAULT \'0\' COMMENT \'{"param":"yorno"}\',
+   `fld_dtchangepassword_users` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\',
    `fld_tsupd_users` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\' COMMENT \'{"tsupd":true}\',
    `fld_tscrt_users` datetime NOT NULL DEFAULT \'1000-01-01 00:00:00\' COMMENT \'{"tscrt":true}\',
    `fld_cntupd_users` bigint(20) NOT NULL DEFAULT \'0\' COMMENT \'{"cntupd":true}\',
@@ -316,7 +318,7 @@ if($err==0){
  $sql='CREATE TABLE `tdo_tbl__zztests` (
    `fld_id_zztests` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
    `fld_yorno1_zztests` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT \'{"showDeleteField":true,"param":"yorno","unsetPossible":true}\',
-   `fld_visited_countries_zztests` set(\'FR\',\'US\',\'GB\',\'BE\',\'KO\',\'ES\',\'JP\',\'CA\') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT \'{"param":"country","set":true}\',
+   `fld_visited_countries_zztests` set(\'FR\',\'US\',\'GB\',\'BE\',\'KO\',\'ES\',\'JP\',\'CA\',\'BR\') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT \'{"param":"country","set":true}\',
    `fld_country1_zztests` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'FR\' COMMENT \'{"param":"country","dropDown":"true","unsetPossible":true}\',
    `fld_title32_zztests` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'\' COMMENT \'{"showDeleteField":true,"tests":{"notVoid":true}}\',
    `fld_id_parent_zztests` bigint(20) unsigned DEFAULT NULL,

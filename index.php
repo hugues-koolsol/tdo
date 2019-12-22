@@ -110,7 +110,7 @@ if(isset($_POST['action']) && $_POST['action']=='step2'){
    exit();
   }else{
    mysqli_set_charset( $dbLink , 'utf8mb4' );
-   $sql='CREATE DATABASE `'.$_SESSION[PGMK]['appkey'].'` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci';
+   $sql='CREATE DATABASE `'.$_SESSION[PGMK]['appkey'].'` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci';
    $res6=@mysqli_query($dbLink,$sql);
    if(mysqli_errno($dbLink)==0){
     $_SESSION[PGMK]['step']=3;

@@ -117,7 +117,7 @@ if($err==0){
  $par=array(
   'table'           => 'tdo_tbl__groups' ,
   'file'            => 'sql_data___tbl__groups.txt' ,
-  'listeDesChamps'  => '`fld_id_groups` , `fld_name_groups` , `fld_parent_id_groups` , `fld_root_group_id_groups` , `fld_isactive_groups` , `fld_category_groups` , `fld_crtLocAdm_groups` , `fld_tsupd_groups` , `fld_tscrt_groups` , `fld_cntupd_groups`' ,
+  'listeDesChamps'  => '`fld_id_groups` , `fld_name_groups` , `fld_parent_id_groups` , `fld_root_group_id_groups` , `fld_isactive_groups` , `fld_role_groups` , `fld_crtLocAdm_groups` , `fld_tsupd_groups` , `fld_tscrt_groups` , `fld_cntupd_groups`' ,
   'tabChamps'       => array (
   0 => 
   array (
@@ -166,7 +166,7 @@ if($err==0){
   ),
   5 => 
   array (
-    0 => 'fld_category_groups',
+    0 => 'fld_role_groups',
     1 => 'varchar(32)',
     2 => 'NO',
     3 => '',
@@ -447,7 +447,7 @@ if($err==0){
  $par=array(
   'table'           => 'tdo_tbl__pages' ,
   'file'            => 'sql_data___tbl__pages.txt' ,
-  'listeDesChamps'  => '`fld_id_pages` , `fld_name_pages` , `fld_menu_pages` , `fld_isajax_pages` , `fld_isremote_pages` , `fld_isuser_pages` , `fld_localadmin_pages` , `fld_i18n_pages` , `fld_isaction_pages` , `fld_parent_pages` , `fld_order_all_pages` , `fld_forbidden_categ_pages` , `fld_tsupd_pages` , `fld_tscrt_pages` , `fld_cntupd_pages`' ,
+  'listeDesChamps'  => '`fld_id_pages` , `fld_name_pages` , `fld_menu_pages` , `fld_isajax_pages` , `fld_isremote_pages` , `fld_isuser_pages` , `fld_localadmin_pages` , `fld_i18n_pages` , `fld_isaction_pages` , `fld_parent_pages` , `fld_order_all_pages` , `fld_forbidden_role_pages` , `fld_tsupd_pages` , `fld_tscrt_pages` , `fld_cntupd_pages`' ,
   'tabChamps'       => array (
   0 => 
   array (
@@ -550,7 +550,7 @@ if($err==0){
   ),
   11 => 
   array (
-    0 => 'fld_forbidden_categ_pages',
+    0 => 'fld_forbidden_role_pages',
     1 => 'varchar(256)',
     2 => 'YES',
     3 => '',
@@ -1399,7 +1399,7 @@ if($err==0){
  $par=array(
   'table'           => 'tdo_tbl__users' ,
   'file'            => 'sql_data___tbl__users.txt' ,
-  'listeDesChamps'  => '`fld_id_users` , `fld_login_users` , `fld_email_users` , `fld_loginisemail_users` , `fld_password_users` , `fld_group_id_users` , `fld_active_users` , `fld_translate_users` , `fld_firstname_users` , `fld_lastname_users` , `fld_comment_users` , `fld_tsupd_users` , `fld_tscrt_users` , `fld_cntupd_users`' ,
+  'listeDesChamps'  => '`fld_id_users` , `fld_login_users` , `fld_email_users` , `fld_loginisemail_users` , `fld_password_users` , `fld_group_id_users` , `fld_active_users` , `fld_translate_users` , `fld_firstname_users` , `fld_lastname_users` , `fld_comment_users` , `fld_changepassword_users` , `fld_dtchangepassword_users` , `fld_tsupd_users` , `fld_tscrt_users` , `fld_cntupd_users`' ,
   'tabChamps'       => array (
   0 => 
   array (
@@ -1502,6 +1502,24 @@ if($err==0){
   ),
   11 => 
   array (
+    0 => 'fld_changepassword_users',
+    1 => 'tinyint(4)',
+    2 => 'NO',
+    3 => '',
+    4 => '0',
+    5 => '',
+  ),
+  12 => 
+  array (
+    0 => 'fld_dtchangepassword_users',
+    1 => 'datetime',
+    2 => 'NO',
+    3 => '',
+    4 => '1000-01-01 00:00:00',
+    5 => '',
+  ),
+  13 => 
+  array (
     0 => 'fld_tsupd_users',
     1 => 'datetime',
     2 => 'NO',
@@ -1509,7 +1527,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  12 => 
+  14 => 
   array (
     0 => 'fld_tscrt_users',
     1 => 'datetime',
@@ -1518,7 +1536,7 @@ if($err==0){
     4 => '1000-01-01 00:00:00',
     5 => '',
   ),
-  13 => 
+  15 => 
   array (
     0 => 'fld_cntupd_users',
     1 => 'bigint(20)',

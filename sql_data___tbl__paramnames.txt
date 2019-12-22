@@ -118,7 +118,7 @@ Ceci ne doit pas être modifié à moins que vous sachiez ce que vous faites !";
         }
     ],
     \"id\": \"5\"
-}";"{\"fr\":[\"43\",\"62\",\"46\",\"49\",\"41\",\"40\",\"42\",\"57\"],\"en\":[\"43\",\"62\",\"40\",\"42\",\"57\",\"46\",\"49\",\"41\"]}";"1";"0";"2017-10-03 20:31:04";"2019-03-18 18:15:55";"27"
+}";"{\"fr\":{\"0\":\"43\",\"1\":\"75\",\"2\":\"62\",\"3\":\"46\",\"4\":\"49\",\"5\":\"41\",\"6\":\"40\",\"7\":\"42\",\"8\":\"57\"},\"en\":{\"0\":\"43\",\"1\":\"75\",\"2\":\"62\",\"3\":\"40\",\"4\":\"42\",\"5\":\"57\",\"6\":\"46\",\"7\":\"49\",\"8\":\"41\"}}";"1";"0";"2017-10-03 20:31:04";"2019-03-18 18:15:55";"27"
 "6";"restore_transform";"transformation for restore";"Les dumps vers le format mysql sont fait sans encodage
 Les restaurations doivent avoir, dans certains cas des transformations d'encodage, voir la fonction the function import_csv() dans zz_restore1.php .
 les clés doibent être écrites avec ce format  :
@@ -160,12 +160,12 @@ An example of this transformation is for the tables of the database \"world\" fr
     ],
     \"id\": \"6\"
 }";"{\"fr\":{\"0\":\"67\",\"1\":\"66\"},\"en\":{\"0\":\"67\",\"1\":\"66\"}}";"0";"1";"2019-04-01 09:00:27";"2019-04-13 14:56:36";"3"
-"7";"group_category";"Group category";NULL;"{
-    \"comment\": \"group categories for users\",
-    \"key\": \"group_category\",
+"7";"group_role";"Group role";NULL;"{
+    \"comment\": \"group rôles for users\",
+    \"key\": \"group_role\",
     \"fields\": [
         {
-            \"name\": \"group_category\",
+            \"name\": \"group_role\",
             \"type\": \"char\",
             \"length\": 32,
             \"comment\": \"root,anonymous,local_admin,user\"
@@ -182,7 +182,7 @@ An example of this transformation is for the tables of the database \"world\" fr
         {
             \"id_db\": 0,
             \"table\": \"tdo_tbl__groups\",
-            \"field\": \"fld_category_groups\"
+            \"field\": \"fld_role_groups\"
         }
     ],
     \"id\": \"7\"

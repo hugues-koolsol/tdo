@@ -1,8 +1,8 @@
-"1";"root";"someone@somewhere.com";"0";"$2y$12$3bp41fGogqgkX9vwEvC8lOHeNFU9guqEjWkYdgOEoYyJl2N.26PZq";"1";"1";"1";"Someone";"Somewhere";NULL;"2019-01-26 17:14:03";"1000-01-01 00:00:00";"27"
-"2";"_anonymous";"_anonymous";"0";"";"2";"1";"0";"";"";NULL;"1000-01-01 00:00:00";"1000-01-01 00:00:00";"0"
-"3";"admin";"";"0";"$2y$12$EHR8kc2e9fjeuGlSvku3duitnJeUwWBZi2UHrw3BFgqToKrqEHnIe";"3";"0";"1";"general";"admin";NULL;"2019-04-07 09:17:56";"2019-04-06 14:05:55";"5"
+"1";"root";"someone@somewhere.com";"0";"$2y$12$mj.QqorVy/PKc5.jF7zSjOnIolWlwBBqiJG7e56dUWi3MswLb.JXa";"1";"1";"1";"Someone";"Somewhere";NULL;"0";"2019-12-21 16:47:03";"2019-12-21 16:47:03";"1000-01-01 00:00:00";"32"
+"2";"_anonymous";"_anonymous";"0";"";"2";"1";"0";"";"";NULL;"0";"1000-01-01 00:00:00";"1000-01-01 00:00:00";"1000-01-01 00:00:00";"0"
+"3";"admin";"";"0";"$2y$12$EHR8kc2e9fjeuGlSvku3duitnJeUwWBZi2UHrw3BFgqToKrqEHnIe";"3";"0";"1";"general";"admin";NULL;"0";"1000-01-01 00:00:00";"2019-04-07 09:17:56";"2019-04-06 14:05:55";"5"
 "4";"to-en";"";"0";"$2y$12$A34yZ9xJ9EZkSjEky7bnWOg3BEPRGXnf2faTMqC.V7lPs/4bSd1yu";"4";"1";"0";"Translate";"To-English";"Le login de ce traducteur finit par -en car on veut lui donner le droit de fournit des traductions en anglais ( en )
 Si on veut ajouter des langues pour un traducteur, il faut mettre autant de -xx que de langues: par exemple toto-fr-en-de-jp
 
 The login of this thanslator ends with -en because we want to give the right to provide english thanslations ( en )
-If you want to add languages for this translator, you must add the -xx languages : example: joeDoe-en-fr-de-jp";"2019-05-18 18:00:55";"2019-05-18 12:05:10";"11"
+If you want to add languages for this translator, you must add the -xx languages : example: joeDoe-en-fr-de-jp";"0";"1000-01-01 00:00:00";"2019-05-18 18:00:55";"2019-05-18 12:05:10";"11"
