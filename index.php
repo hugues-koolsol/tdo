@@ -378,7 +378,7 @@ if(!isset($_SESSION[PGMK]['step']) || $_SESSION[PGMK]['step']==1){
   $o1.='<p>';
   $o1.='The server address';
   $o1.='<br />';
-  $o1.='<input type="text" value="localhost:3306" name="server" size="32" />';
+  $o1.='<input type="text" value="localhost:3308" name="server" id="server" size="32" /> <a href="#" onclick="document.getElementById(\'server\').value=\'localhost:3306\';return false;">localhost:3306</a>';
   $o1.='</p>';
 
   $o1.='<p>';
