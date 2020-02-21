@@ -105,7 +105,7 @@ if($err==0){
    `fld_tag_log` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
    `fld_group_id_log` int(11) NOT NULL DEFAULT \'1\',
    PRIMARY KEY (`fld_id_log`)
- ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
+ ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci';
  if(!($result=mysqli_query($dbLink,$sql))){
   $err=1;
   header('Location: '.BNF.'?errormessage='.urlencode(basename(__FILE__) . ' ' . __LINE__ . ' I cannot create the table tdo_tbl__log'.mysqli_error($dbLink) ) );
