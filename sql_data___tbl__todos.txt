@@ -63,13 +63,12 @@ and set them to
 txt1('bla bla')
 ";"2019-01-26 14:41:13";"2017-12-07 20:54:16";"2"
 "123";"92";"1";"Useful and strange utf8 values";"⇐⇒⇑⇓⇔⇕⇰⇳⇦⇨⇧⇩⇠ ⇡ ⇢ ⇣ ⇤ ⇥ ⇦ ⇧ ⇨ ⇩ ⇪ ⇫ ⇬ ⇭ ⇮ ⇯ ⇰ ⇱ ⇲ ⇳ ⇴ ⇵ ⭐⭮⭯↺↻⟲⟳ ↚ ↛ 
-×✕╳▣▦◉◎◯⬤●✳✴ ✍ ⭐
-⌦ ⌧ ⌨ ⟨ ⟩ ⌫
-? ? ? ? ? ? ? ? ? ? ? ??????✋??✊????? ✈???☎??????
-??⏰⌚⏱⏲⏳⏩⏪⏫⏬⏭ ⏮ ⏯⏴⏵⏶⏷ ⏸ ⏹⏺???????????????????????
-☀ ☁ ☂ ? ? ? ⚠ ?✉
-
+×✕╳▣▦◉◎◯⬤●✳✴ ✍ ⭐⌦ ⌧ ⌨ ⟨ ⟩ ⌫
+🦇 💩 🤪 😀 😂 🤣 😉 😎 🤔 😐 🙄 🤑🤡😨😱😈👽✋👍👎✊🖐👏💣💥🌐🛑 ✈🔥🕾📞☎💾🖳🎥💡💰🔧
+🌎🗺⏰⌚⏱⏲⏳⏩⏪⏫⏬⏭ ⏮ ⏯⏴⏵⏶⏷ ⏸ ⏹⏺🎨🏴🏳👋🏆💪🏅💻🖨💾🖳📑📌📝📧🔈🔊🔎🔍🔔🕭🧠🧡
+☀ ☁ ☂ 👍 💣 🙂 ⚠ 📩✉☰🏠🛴☑
 ➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈ ➉ ➊ ➋ ➌ ➍ ➎ ➏ ➐ ➑ ➒ ➓ 
+
 http://csbruce.com/software/utf-8.html
 https://www.utf8icons.com/
 http://www.fileformat.info/info/unicode/block/index.htm
@@ -95,7 +94,7 @@ They are visually the same on google chrome and both are valid utf-8 encoding.
 4°) only the second \"à\" is valid for searches . For example, if you look for \"déjà\" with the bad \"à\" , il will not be founded.
 
 So the function addslashes1 fix the problem ( partially for some characters ) to put the right utf8 encoding
-";"2019-08-15 10:11:52";"2018-02-07 12:12:01";"55"
+";"2020-04-06 16:23:54";"2018-02-07 12:12:01";"63"
 "150";"95";"1";"example of a view";"This example comes from the sakila database example from mysql.
 
 {\"view_key_for\":[\"view_address_list\"]} on key_autoincrement_field
